@@ -1,0 +1,63 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-21-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <!-- Search Fields Card Start -->
+    <lightning-card >
+        
+            <div class="slds-p-horizontal_small">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="3" padding="around-small">
+                        <div style="font-weight:bold">
+                            <lightning-input type="text" label="Account Name" value="" placeholder="Enter Account Name"
+                                onchange={handleChange} name="Name"  autocomplete="false" minlength="3" message-when-too-short="Minimum of 3 characters required to search" class="fieldvalidate"></lightning-input>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="3" padding="around-small">
+                        <div style="font-weight:bold">
+                            <lightning-input type="text" label="Account Phone" value="" placeholder="Enter Account Phone"
+                                onchange={handleChange} name="Phone"  autocomplete="false" minlength="3" message-when-too-short="Minimum of 3 characters required to search" class="fieldvalidate"></lightning-input>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="3" padding="around-small">
+                        <div style="font-weight:bold">
+                            <lightning-input type="text" label="Account Number" value="" placeholder="Enter Account Number"
+                                onchange={handleChange} name="Number" autocomplete="false" minlength="3" message-when-too-short="Minimum of 3 characters required to search" class="fieldvalidate"></lightning-input>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="3" padding="around-small" class="slds-m-top_large">
+                        <lightning-button variant="brand" label="Search" title="Search" icon-name="utility:search"
+                            class="slds-m-left_x-small" onclick={searchAccount}></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+       
+       
+                <div style="height: 180px;">
+                    <lightning-datatable key-field="id"
+                                         data={data} 
+                                         columns={columns} 
+                                         hide-checkbox-column="true"
+                                         show-row-number-column="true"
+                                         sorted-direction={sortDirection}
+                                         sorted-by={sortedBy}
+                                         onsort={onHandleSort}
+                                         onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </div>
+            
+       
+    </lightning-card>
+   
+    <!-- Show Spinner when data load -->
+    <div if:true={isLoading}>
+        <lightning-spinner
+            alternative-text="Loading..." variant="brand">
+        </lightning-spinner>
+    </div>
+    <!-- End Spinner Loading -->
+</template>

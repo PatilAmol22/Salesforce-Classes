@@ -1,0 +1,41 @@
+<template>
+   
+        <lightning-card title="Enter Student Information"> 
+            
+              <lightning-input type="text" 
+              label="Name"
+              onchange={handleChange}
+              placeholder="Enter  Name" 
+              value={name} 
+              ></lightning-input> 
+         
+        </br>
+            <lightning-input type="text" 
+              label="Account Number"
+              onchange={handleChange}
+              placeholder="Enter Account Number" 
+              value={accountnumber}  
+              ></lightning-input>
+        </br>
+            <lightning-input type="text" 
+            label="Phone Number"
+            onchange={handleChange}
+            placeholder="Enter Phone Number" 
+            value={phone}  
+            ></lightning-input>
+        </br>
+           
+        <div class="slds-form-element buttons slds-text-align_center">
+            <lightning-button class="slds-m-top_small"
+                              label="Submit"
+                              variant="Brand" 
+                              onclick={handleClick}
+                              >
+            </lightning-button>
+            </div>  
+
+     <c-student-information get-record={data}></c-student-information>
+        </lightning-card>   
+      
+   
+</template>

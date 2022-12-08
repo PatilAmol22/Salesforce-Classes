@@ -6,6 +6,7 @@ import getACC from '@salesforce/apex/AccHandler.getACC';
 import getAccounts from '@salesforce/apex/AccHandler.getAccounts';
 import deleteAccounts from '@salesforce/apex/AccHandler.deleteAccounts';
 import deleteSelectedAccounts from '@salesforce/apex/AccHandler.deleteSelectedAccounts';
+import getAccountSearch from '@salesforce/apex/AccHandler.getAccountSearch';
 //import serachAccs from '@salesforce/apex/AccHandler.retriveAccs';
 import { createRecord } from 'lightning/uiRecordApi';
 
@@ -40,12 +41,14 @@ const actions = [
         { label: 'Edit', name: 'edit'}, 
         { label: 'Delete', name: 'delete'}
         ];
-        const columns = [
+
+const columns = [
         { label: Account_Name, fieldName: 'Name', 
         type: 'text', sortable: true, 
         editable: true, 
-        hideDefaultActions: "true"
-
+        hideDefaultActions: "true",
+        
+        
         },
         { label: Account_Number, 
             fieldName: 'AccountNumber',
@@ -58,21 +61,32 @@ const actions = [
             fieldName: 'Phone', 
             sortable: true , 
             editable: true,
-            hideDefaultActions: "true"
+            hideDefaultActions: "true",
+            cellAttributes: { 
+                iconName: 'utility:call' 
+            }
 
         },
         { label: 'Date', 
-        fieldName: 'Date__c', 
+        fieldName: 'Date__c',
+        type:'date-local',
         sortable: true,
         editable: true,
-        hideDefaultActions: "true"
+        hideDefaultActions: "true",
+        cellAttributes: { 
+            iconName: 'utility:event' 
+        }
+
 
         },
         { label: 'Email', 
         fieldName: 'Email__c',
         sortable: true, 
         editable: true,
-        hideDefaultActions: "true"
+        hideDefaultActions: "true",
+        cellAttributes: { 
+            iconName: 'utility:email' 
+        }
 
         },
         { label: Ownership, 
@@ -106,6 +120,10 @@ export default class LWCCRUDPagination extends LightningElement {
         @api searchKey = '';
         result;
         @api recordId;
+        @api nameSearch;
+        @api Phone;
+        @api AccountEmail;
+
         @track allSelectedRows = [];
         @track page = 1;
         @track items = [];
@@ -117,10 +135,15 @@ export default class LWCCRUDPagination extends LightningElement {
         @track totalRecountCount = 0;
         @track totalPage = 0;
         @track isEditForm = false;
+        @track searchType = '';
+        @track mydata;
         isPageChanged = false;
         initialLoad = true;
 
         mapAccount = new Map();
+
+       
+    
 get options() {
     return [
         { label: '5', value: '5' },
@@ -155,6 +178,15 @@ OwnershipValues = [
 ];
 
 
+get searchOptions() {
+    return [
+        { label: 'Select Search Type', value: '' },
+        { label: 'Name', value: 'Name' },
+        { label: 'Phone', value: 'Phone' },
+        { label: 'Email', value: 'Email' }
+    ];
+}
+
 Name = '';
 Accountnumber = '';
 Phone= '';
@@ -186,7 +218,9 @@ handleOwnershipChange(event)
 {
 this.Ownership=event.target.value;
 }
-    createAccount()
+
+
+createAccount()
     {
         console.log(this.selectedAccountId);
         const fields = {};
@@ -210,16 +244,6 @@ this.Ownership=event.target.value;
                     }),
                 );
                 
-                // eval("$A.get('e.force:refreshView').fire();")
-
-            //    this[NavigationMixin.Navigate]({
-            //        type: 'standard__recordPage',
-            //        attributes: {
-            //            recordId: contactobj.id,
-            //            objectApiName: 'Account',
-            //            actionName: 'view'
-            //        },
-            //    });
 
             this.loader = true;
             refreshApex(this.refreshTable);
@@ -250,6 +274,7 @@ this.Ownership=event.target.value;
 handleChange(event) {
     this.pageSize = event.detail.value;
     this.processRecords(this.items);
+
 }
 
 @wire(getACC, { accId: '$recordId' })
@@ -274,8 +299,8 @@ wiredAccounts({ error, data }) {
         this.error = error;
         this.data = undefined;
     }
-}
 
+}
 
 handleRowActions(event) 
 {
@@ -629,4 +654,89 @@ async handleSave(event) {
         );
     }
 }
+
+//Dynamic Search Functionality
+
+  
+handleNameKeyChange( event ) {
+    window.console.log('Inside Name');
+    this.page = 1; 
+    event.target.name == 'nameSearch'
+    this.nameSearch = event.target.value;
+    var data = [];
+    for(var i=0; i<this.items.length;i++){
+    if(this.items[i]!= undefined && this.items[i].Name.includes(this.nameSearch)){
+    data.push(this.items[i]);
+    }
+    }
+    //this.processRecords(data);
+    }
+   
+   handlePhoneKeyChange( event ) {
+    this.page = 1; 
+    event.target.name == 'Phone'
+    this.Phone = event.target.value;
+    console.log('Phone'+this.carName)
+    var data = [];
+    for(var i=0; i<this.items.length;i++){
+    if(this.items[i]!= undefined && this.items[i].Name.includes(this.Phone)){
+    data.push(this.items[i]);
+    }
+    }
+    // this.processRecords(data);
+    }
+   
+   handleEmailKeyChange( event ) {
+    this.page = 1; 
+    event.target.name == 'AccountEmail'
+    this.AccountEmail = event.target.value;
+    var data = [];
+    for(var i=0; i<this.items.length;i++){
+    if(this.items[i]!= undefined && this.items[i].Name.includes(this.AccountEmail)){
+    data.push(this.items[i]);
+    }
+    }
+    // this.processRecords(data);
+    }
+    
+    
+searchAccount(){
+    getAccountSearch({nameSearch: this.nameSearch, Phone: this.Phone, AccountEmail: this.AccountEmail})
+    .then(data=>{
+    console.log(data);
+    this.page = 1; 
+    this.totalRecountCount = data.length; 
+    this.totalPage = Math.ceil(this.totalRecountCount / this.pageSize);
+    this.data = this.items.slice(0,this.pageSize); 
+    this.endingRecord = this.pageSize;
+    this.columns = columns; 
+    this.processRecords(data);
+    // this.totalRecountCount = data.length;
+    // this.totalPage = Math.ceil(this.totalRecountCount / this.pageSize);
+    // //here we slice the data according page size
+    // this.data = this.items.slice(0,this.pageSize); 
+    // this.endingRecord = this.data.length; 
+    // this.currentPageSize = this.endingRecord - this.startingRecord + 1;
+    }) .catch(error=>{
+    console.log(error);
+    this.error = error;
+    this.data = undefined;
+    
+    // this.showToast(this.error, 'Error', 'Error'); //show toast for error
+    })
+    }
+
+    handleAccountSelection(event){
+        //this.accountName = event.detail.Name;
+        //this.accountId = event.detail.Id;
+        console.log("the selected record id is"+event.detail);
+        console.log('accountname - ',event.detail.Name );
+        console.log("accountId - ",event.detail.ID);
+
+        
+    }
 }
+
+
+
+
