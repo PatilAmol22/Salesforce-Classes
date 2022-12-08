@@ -1,0 +1,86 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-15-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card variant="narrow"  size="Medium" icon-name="standard:account" title="Account Creator">       
+        <div class="slds-box">
+            
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" 
+                    label="Account Name"
+                        onchange={handleNameChange}
+                        placeholder="Enter Account Holder Name" 
+                        value={Name} 
+                        required="true"></lightning-input>    
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" label="Account Number" 
+                    onchange={handleNumberChange} 
+                    placeholder="Enter Account Number" 
+                    value={AccountNumber} 
+                    required="true"></lightning-input>
+                    
+                </div>
+            </div>   
+            
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="text" label="Phone" 
+                    max-length="10"
+                    message-when-too-long="Please Enter 10 Digit" 
+                    onchange={handlePhoneChange} 
+                    placeholder="Enter Phone Number"
+                     value={Phone} 
+                     required="true"></lightning-input>
+                    
+                </div>
+                
+                
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning-input type="date"
+                     label="Date"
+                      onchange={handleDateChange} 
+                     placeholder="Enter Date" 
+                     value={Date__c} 
+                      required="true"></lightning-input>
+        
+                    
+                </div></div>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-input type="email" 
+                         label="Email"
+                         onchange={handleEmailChange}
+                         pattern=".+@gmail.com"
+                          placeholder="Enter Email Address" 
+                          required="true"
+                          value={Email__c}  ></lightning-input>  
+                        </div>
+    
+                        <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                            <div class="slds-form-element">
+            <lightning-combobox
+            name="Ownership"
+            label="Ownership"
+            value={OwnershipVal}
+            onchange={handleOwnershipChange}
+            options={OwnershipValues}></lightning-combobox>
+    
+                </div></div></div>
+                <br/>
+    
+               <div class="slds-form-element buttons slds-text-align_center">
+                <lightning-button label="Submit" 
+                                  variant="Brand" 
+                                  onclick={createAccount}>
+                </lightning-button>
+                </div>
+    
+</div>
+    </lightning-card> 
+    </template>

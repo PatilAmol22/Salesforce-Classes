@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-19-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="ForEachDemo">
+       <template if:true={AccData.data}>
+           <template for:each = {AccData.data} for:item="Acc">
+               <h3 key={Acc.Id}>{Acc.Name}</h3>
+           </template>
+       </template>
+
+    <template if:true ={AccData.error}>
+        {AccData.error}
+    </template>
+    </lightning-card>
+    
+</template>

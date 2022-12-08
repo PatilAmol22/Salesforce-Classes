@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-18-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Full name">
+         <lightning-input name ="firstName" label="First Name" onchange={handleChange}></lightning-input>
+         <lightning-input name ="lastName" label="Last Name" onchange={handleChange}></lightning-input>
+    
+        </lightning-card>
+        <lightning-card title="Updated Changed Value">
+            <h1>
+               Updated first name :<b>{fullName.firstName}</b>
+            <br/>
+               Updated Last name:<b>{fullName.lastName}</b>
+            </h1>
+    </lightning-card>
+    
+</template>

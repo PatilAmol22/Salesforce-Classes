@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-24-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Record Edit Form Demo By LWC">
+         <!-- record-Edit-form -->
+         <lightning-record-edit-form  object-api-name={ObjectApiName}
+                                      onsuccess={handleSuccess}
+                                      density="Compact"
+         >
+         <!-- for recordId -->
+         <lightning-input-field field-name="Id" value={AccountId}></lightning-input-field>
+         
+          <lightning-input-field field-name={nameField}></lightning-input-field>
+          <lightning-input-field field-name={numberField}></lightning-input-field>
+          <lightning-input-field field-name={phoneField}></lightning-input-field>
+          <lightning-input-field field-name={websiteField}></lightning-input-field>
+
+          <lightning-button  class="slds-m-top_small" label="Submit" variant="brand" type="Submit">
+
+          </lightning-button>
+         </lightning-record-edit-form>
+</lightning-card>
+</template>

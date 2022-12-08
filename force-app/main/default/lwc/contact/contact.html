@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-14-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Contact Search">
+        <lightning-layout multiple-rows="true" vertical-align="end">
+            <lightning-layout-item size="4" padding="around-small">
+                                <!-- lightning input -->
+                <lightning-input type="text" label="Enter Contact Name" value={key}
+                onchange={updateKey}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="2" padding="around-small">
+                                <!-- lightning button -->
+                <lightning-button label="FILTER" onclick={handleSearch} variant="brand"></lightning-button>  
+            </lightning-layout-item>
+            <lightning-layout-item size="12" padding="around-small">
+                                 <!--lightning table -->
+                <lightning-datatable key-field="id" data={contacts} columns={columns}></lightning-datatable>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+    <div class="slds-col">
+        <span><p style="margin-left: 5%">Selected Records: <b style="color:red;">{recordsCount}</b></p></span>
+    </div>
+    <div class="slds-col">
+        <span>                    
+            <lightning-button label="Delete"
+                              icon-name="utility:delete"
+                              disabled={isDeleteButtonDisabled}
+                              variant="destructive"
+                              onclick={deleteContacts}
+            ></lightning-button>
+        </span>
+    </div>
+</template>

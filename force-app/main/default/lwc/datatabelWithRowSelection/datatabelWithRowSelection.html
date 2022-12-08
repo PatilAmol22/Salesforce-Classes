@@ -1,0 +1,37 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 05-20-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-button variant="brand"
+                      label={ShowContact}
+                      onclick={handleClick}>
+                    
+    </lightning-button>
+    <!-- Hide/Show DataTable -->
+    <template if:true={isVisible}>
+    <lightning-card title="LWC DataTable">
+
+    <!-- Input Box For Search Functionality -->
+    <lightning-input type="search"
+                     onchange={handleChanged}
+                     label="Search"
+                     value={searchKey}>
+    </lightning-input>
+
+
+        <!-- DataTable Section Starts here -->
+        <lightning-datatable
+        data={data}
+        columns={columns}
+        key-field="Id"
+        onrowselection={getSelectedRows}>
+
+    </lightning-datatable>
+    
+  </lightning-card>
+    </template>
+</template>

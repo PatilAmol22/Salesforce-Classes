@@ -1,0 +1,94 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 07-13-2022
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card>
+    <lightning-record-edit-form record-id={recordEditId} record-type-id={defaultRecordType} object-api-name="Contact">
+
+        <!-- Lightning Messages Display -->
+        <lightning-messages></lightning-messages>
+
+        <!-- Contact Edit Form -->
+        <div class="slds-grid slds-gutters">
+
+            <div class="slds-col">
+
+                <lightning-input-field data-field="FirstName" field-name="FirstName">
+                </lightning-input-field>
+
+                <lightning-input-field data-field="Title" field-name="Title">
+                </lightning-input-field>
+
+                <lightning-input-field data-field="MobilePhone" field-name="MobilePhone">
+                </lightning-input-field>
+
+                <lightning-input-field data-field="Social_Security_Number__c"
+                    field-name="Social_Security_Number__c">
+                </lightning-input-field>
+
+                <lightning-input-field data-field="HomePhone" field-name="HomePhone">
+                </lightning-input-field>
+
+            </div>
+
+            <!-- Contact Edit Form -->
+
+            <div class="slds-col">
+
+                <lightning-input-field data-field="LastName" field-name="LastName">
+                </lightning-input-field>
+
+                <lightning-input-field data-field="Email" field-name="Email">
+                </lightning-input-field>
+
+                <lightning-input-field data-field="Birthdate" field-name="Birthdate">
+                </lightning-input-field>
+
+                <lightning-input-field data-field="Ownership_Percentage__c"
+                    field-name="Ownership_Percentage__c">
+                </lightning-input-field>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="slds-grid slds-gutters">
+
+            <div class="slds-col">
+
+                <!-- <lightning-input-field data-field="MailingAddress" field-name="MailingAddress">
+                </lightning-input-field> -->
+
+                <lightning-input-field data-field="MailingStreet" field-name="MailingStreet"></lightning-input-field>
+
+                <lightning-input-field data-field="MailingCity" field-name="MailingCity"></lightning-input-field>
+
+            </div>
+
+        </div>
+
+        <div class="slds-grid slds-gutters">
+
+            <div class="slds-col">
+
+                <lightning-input-field data-field="MailingPostalCode" field-name="MailingPostalCode"></lightning-input-field>
+                
+            </div>
+
+            <div class="slds-col">
+
+                <lightning-input-field data-field="MailingState" field-name="MailingState"></lightning-input-field>
+                
+            </div>
+
+        </div>
+
+    </lightning-record-edit-form>
+</lightning-card>
+</template>
