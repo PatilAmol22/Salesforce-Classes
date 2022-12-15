@@ -1,0 +1,21 @@
+<aura:component >
+    <aura:attribute name="item" type="Camping_Item__c"/>
+    <lightning:card >
+        <p class="slds-p-horizontal_small">
+            Name:  {!v.item.Name}
+        </p>
+        
+        <p class="slds-p-horizontal_small">
+            Price: <lightning:formattedNumber value="{!v.item.Price__c}" style="currency"/>
+        </p>
+        <p class="slds-p-horizontal_small">
+            Quantity: {!v.item.Quantity__c}
+        </p>
+        
+        <p class="slds-p-horizontal_small">
+            Packed:
+            <ui:outputCheckbox value="{!v.item.Packed__c}"/>
+        </p>
+        
+    </lightning:card>
+</aura:component>

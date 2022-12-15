@@ -1,0 +1,73 @@
+<aura:component controller="CRUIDPracticeController" implements="force:appHostable,flexipage:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickAction,force:hasRecordId" access="global" >
+    <aura:attribute name="AccountName" type="String"/>
+    <aura:attribute name="Phone" type="String"/>      
+    <aura:attribute name="accList" type="List"/>
+    <aura:attribute name="AccountNumber" type="String"/>
+    <aura:attribute name="tmpRecId" type="String"/>
+    <aura:attribute name="showEditButton" type="Boolean" default="false"/>
+    <aura:attribute name="showSubmitButton" type="Boolean" default="true"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:card  iconName="standard:account" title="Account Creator">
+        <div class="slds-box">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_6-of-12">
+                    
+                    <lightning:input name="Name" label="Account Name" placeholder="Enter Account" value="{!v.AccountName}" required="true" />
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning:input name="Account Number" label="Account Number" maxlength="8"
+                                     pattern="[0-9]{8}"  messageWhenPatternMismatch="The Account Number must contain 8 digits." placeholder="Enter Account Number" value="{!v.AccountNumber}" variant="label-inline"/>
+                </div>
+            </div>   
+            
+            <div class="slds-grid slds-gutters">
+         <div class="slds-col slds-size_6-of-12">
+             
+        <lightning:input type="tel" name="Phone" label="Phone" maxlength="11" pattern="[0-9]{11}"  messageWhenPatternMismatch="The phone number must contain 11 digits." placeholder="Enter Phone Number" value="{!v.Phone}" variant="label-inline"/>
+            </div> </div> </div>
+            
+        </lightning:card>
+        <br/>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_5-of-12">
+            </div>
+            <div class="slds-col slds-size_5-of-12">
+                <aura:if isTrue="{!v.showSubmitButton}"> <br/>
+                    <lightning:button variant="brand" label="Submit" title="Brand action" onclick="{! c.handleClick }" />
+                </aura:if>
+                <br/> <br/>
+                <aura:if isTrue="{!v.showEditButton}">
+                    <lightning:button variant="brand" label="Update" title="Brand action" onclick="{! c.submitEdit }" />
+                    
+                </aura:if>
+            </div></div>
+        <br/>
+        <lightning:card title="Account Details">
+            <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                <tr style="background-color:#6cbcd2;color:blue;font-weight:bold">           
+                    <th>Account Name</th>
+                    <th>Account Number</th>
+                    <th>Phone</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+                <aura:iteration items='{!v.accList}' var="acc">
+                    <tr> 
+                        <td>{!acc.Name} </td>
+                        <td>{!acc.AccountNumber} </td>
+                        <td>{!acc.Phone} </td>
+                        <td>
+                            <!--  <lightning:button variant="brand" label="Delete" value="{!acc.Id}" title="Brand action" onclick="{! c.handleDelete }" />  -->            
+                            <lightning:buttonIcon iconName="utility:delete"  variant="container" value="{!acc.Id}" onclick="{! c.handleDelete }" alternativeText="Delete" title="Brand action" />
+                        </td>
+                        <td>
+                            <!--   <lightning:button variant="brand" label="Edit" value="{!acc.Id}" title="Brand action" onclick="{! c.handleEdit }" />-->
+                            <lightning:buttonIcon iconName="utility:edit"  variant="container" value="{!acc.Id}" onclick="{! c.handleEdit }" alternativeText="Edit" title="Brand action" />
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </table>
+        </lightning:card>
+    </aura:component>

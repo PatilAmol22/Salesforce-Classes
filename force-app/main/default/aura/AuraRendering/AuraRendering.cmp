@@ -1,0 +1,26 @@
+<aura:component implements="lightning:recordHomeTemplate" description="...">
+    <aura:attribute name="region_header"    type="Aura.Component[]" />
+    <aura:attribute name="region_left"      type="Aura.Component[]" />
+    <aura:attribute name="region_right"     type="Aura.Component[]" />
+    
+    <aura:handler event="aura:doneRendering" action="{!c.doneRendering}"/>
+    
+    <div id="stickySection" role="banner" class="forceHighlightsPanel">
+        <lightning:layout horizontalAlign="spread" multipleRows="false" aura:id="stickySection">
+            <lightning:layoutItem>
+                {!v.region_header}
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    <div>
+        <lightning:layout horizontalAlign="spread">
+            <lightning:layoutItem flexibility="grow" class="slds-m-right_small">
+                {!v.region_left}
+            </lightning:layoutItem>
+            <lightning:layoutItem size="{! $Browser.isDesktop ? '4' : '6' }" class="slds-m-left_small">
+                {!v.region_right}
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+    
+</aura:component>

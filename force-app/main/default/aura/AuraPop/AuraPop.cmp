@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	 <aura:attribute name="titleMessage" type="String" default="Information" />
+    <aura:attribute name="bodyMessage" type="String" default="We have created a generic model component!!" />
+    <aura:attribute name="footerButtonDisplay" type="boolean" default="false" />
+    <aura:attribute name="bodyComponent" type="String" default="c:LightningModelComp" />
+    <aura:attribute name="FooterComponent" type="String" default="c:LightningModelFooterComp" />
+
+    <div class="slds-form-element">
+            <lightning:buttonMenu aura:id="overlayLib" alternativeText="Show menu" onselect="{!c.handleMenuSelect}">
+            <lightning:menuItem label="Edit"   iconName="utility:edit"   value="edit"/>
+            <lightning:menuItem label="Delete" iconName="utility:delete" value="delete"/>
+            </lightning:buttonMenu>
+    </div>
+</aura:component>

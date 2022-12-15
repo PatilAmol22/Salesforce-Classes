@@ -1,0 +1,403 @@
+<aura:component controller="AuraAccountController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickAction,force:hasRecordId" 
+                access="global" >
+    
+    <aura:attribute name="AccountName" type="String"/>
+    <aura:attribute name="Phone" type="String"/> 
+    <aura:attribute name="AccountNumber" type="String"/>
+    <aura:attribute name="Date" type="Date"/>  
+    <aura:attribute name="AccountOwnership" type="String"/> 
+    <!--Define List and Getting Record Id-->
+    <aura:attribute name="getAllData" type="List"/>
+    <aura:attribute name="tmpRecId" type="String"/>
+    <aura:attribute name="accId" type="String"/>
+    <!--Button Action-->
+    <aura:attribute name="showEditButton" type="Boolean" default="false"/>
+    <aura:attribute name="showSubmitButton" type="Boolean" default="true"/>
+    <!--Confirm Box-->
+    <aura:attribute name="showConfirmDialog" type="boolean" default="false"/>
+    <!--Pagination-->
+    <aura:attribute name="PageNumber" type="integer" default="1"/>
+    <aura:attribute name="TotalPages" type="integer" default="0"/>
+    <aura:attribute name="TotalRecords" type="integer" default="10"/>
+    <aura:attribute name="RecordStart" type="integer" default="0"/>
+    <aura:attribute name="RecordEnd" type="integer" default="0"/>
+    <!--Spinner-->
+    <aura:attribute name="isSending" type="boolean" default="true"/>
+    <aura:attribute name="selectedCount" type="integer" default="0"/>
+    <!--aura Spinner handler -->
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    
+    <!--sorting-->
+    <aura:attribute name="isSortByName" type="Boolean" default="false"/>
+    <aura:attribute name="isSortByAccNo" type="Boolean" default="false"/>
+    <aura:attribute name="isSortByPhone" type="Boolean" default="false"/>
+    <aura:attribute name="isSortByDate" type="Boolean" default="false"/>
+    <aura:attribute name="isSortByOwnership" type="Boolean" default="false"/>
+    <aura:attribute name="isSortAsc" type="Boolean" default="true"/>
+    <aura:attribute name="selectedSortingField" type="String" default="Name"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <!--Handler class-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!--Spinner Class-->
+    <aura:renderif isTrue="{!v.isSending}">
+        <div class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:renderif> 
+    
+    <!--Account Input-->
+    <lightning:card variant="narrow" iconName="standard:account" title="Account Creator">  
+    </lightning:card>
+    
+    <lightning:card>
+        <div class="slds-box">
+            
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning:input name="Name" 
+                                     aura:id="NAME" 
+                                     label="Account Name"
+                                     placeholder="Enter Account" 
+                                     value="{!v.AccountName}" 
+                                     class="validate" 
+                                     type="text"
+                                     required="true" />
+                </div>
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning:input name="AccountNumber" 
+                                     aura:id="NUMBER" 
+                                     label="Account Number"
+                                     class="validate"
+                                     required="true"
+                                     maxlength="5"
+                                     pattern="[0-9,A-Z]{5}"  
+                                     messageWhenPatternMismatch="The Account Number must contain 5 digits."
+                                     placeholder="Enter Account Number"
+                                     value="{!v.AccountNumber}" />
+                </div>
+            </div>   
+            
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning:input type="tel"
+                                     aura:id="PHONE" 
+                                     name="Phone"
+                                     label="Phone"
+                                     class="validate"
+                                     required="true"
+                                     maxlength="10"
+                                     pattern="[0-9]{10}"
+                                     messageWhenPatternMismatch="The phone number must contain 11 digits." 
+                                     placeholder="Enter Phone Number"
+                                     value="{!v.Phone}"
+                                     />
+                </div>
+                
+                
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning:input type="Date"
+                                     aura:id="DATE" 
+                                     name="Date"
+                                     label="Date"
+                                     class="validate"
+                                     required="true" 
+                                     placeholder="Enter Date"
+                                     value="{!v.Date}"
+                                     />
+                </div></div>
+            
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_6-of-12">
+                    <lightning:select aura:id="pickType" 
+                                      name="AccountOwnership" 
+                                      value="{!v.AccountOwnership}"
+                                      label="Ownership" 
+                                      class="validate"
+                                      required="true">
+                        <option value="None">--None--</option>
+                        <option value="Public">Public</option>
+                        <option value="Private">Private</option>
+                        <option value="Subsidiary">Subsidiary</option>
+                        <option value="Other">Other</option>
+                    </lightning:select>
+                </div></div></div>
+        <br></br>
+        
+        <!--Buttons Group-->
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_5-of-12"></div>
+            <aura:if isTrue="{!v.showSubmitButton}">
+                <br/>
+                <div class="slds-col slds-size_5-of-12">
+                    <lightning:button 
+                                      variant="brand"
+                                      label="Submit" 
+                                      title="Brand action" 
+                                      onclick="{! c.handleClick }" />
+                </div> 
+            </aura:if> 
+            <br/>
+            <div class="slds-col slds-size_5-of-12">
+                <aura:if isTrue="{!v.showEditButton}">
+                    
+                    <lightning:button variant="brand" 
+                                      label="Update"
+                                      title="Brand action"
+                                      onclick="{! c.submitEdit }" />
+                    
+                </aura:if>
+            </div></div>
+    </lightning:card>
+    <br/><br/> 
+    
+    <!--Table Header-->
+    <lightning:card  variant="narrow" iconName="action:preview" title="{!$Label.c.Account_Information}"  >
+        <div class="slds-box">
+            <div class="slds-grid slds-grid--align-end">
+                <span class="slds-badge">Selected Contact:{!v.selectedCount}</span>
+                <button class="slds-button slds-button--brand" onclick="{!c.deleteSelected}">Delete Account
+                </button>
+            </div></div>
+        <div class="slds-m-around_xx-small">
+            <div class="slds-float_right">
+                <ui:inputSelect aura:id="pageSize" label="Display Records Per Page: " change="{!c.onSelectChange}">
+                    <ui:inputSelectOption text="10" label="10" value="true"/>
+                    <ui:inputSelectOption text="15" label="15"/>
+                    <ui:inputSelectOption text="20" label="20"/>
+                </ui:inputSelect>
+                <br/>
+            </div></div>
+        
+        <!--Table-->
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+                <tr class="slds-line-height_reset slds-text-title_caps"
+                    style="background-color:#ffffff;color:Black;font-weight:bold" >
+                    
+                    <!--checkbox-->
+                    <!--  <th style="width:3.25rem;" class="slds-text-align_right">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <label class="slds-checkbox">
+                                    <ui:inputCheckbox disabled="{!v.totalRecordsCount == 0}"
+                                                      aura:id="selectAllId"
+                                                      change="{!c.selectAllCheckbox}"/>
+                                    <span class="slds-checkbox_faux"></span>
+                                    <span class="slds-form-element__label"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </th>-->
+                    <th style="width:3.25rem;" class="slds-text-align--right">
+                        <div class="slds-form-element">
+                            <div class="slds-form-element__control">
+                                <label class="slds-checkbox">
+                                    <!--header checkbox for select all-->
+                                    <ui:inputCheckbox aura:id="box3" change="{!c.selectAll}"/>
+                                    <span class="slds-checkbox--faux"></span>
+                                    <span class="slds-form-element__label text"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </th>
+                    
+                    <!--Sorting Content-->
+                    <!--Coulumn Heading-->
+                    <th style="width:15%" data-record="Name" class="slds-is-resizable" scope="col" onclick="{!c.handleSorting}">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset">
+                            <span class="slds-assistive-text">Sort</span>
+                            <span class="slds-truncate" title="Name">Name</span>
+                            <aura:if isTrue="{!v.isSortByName}">
+                                <aura:if isTrue="{!v.isSortAsc}">
+                                    &#9650;
+                                    <aura:set attribute="else">
+                                        &#9660;
+                                    </aura:set>
+                                </aura:if> 
+                            </aura:if>
+                        </a>
+                    </th>
+                    <th style="width:15%"  data-record="AccountNumber" class="slds-is-resizable" scope="col" onclick="{!c.handleSorting}">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset">
+                            <span class="slds-assistive-text">Sort</span>
+                            <span class="slds-truncate" title="Account Number">Account Number</span>
+                            <aura:if isTrue="{!v.isSortByAccNo}">
+                                <aura:if isTrue="{!v.isSortAsc}">
+                                    &#9650;
+                                    <aura:set attribute="else">
+                                        &#9660;
+                                    </aura:set>
+                                </aura:if> 
+                            </aura:if>
+                        </a>
+                    </th>
+                    
+                    <th style="width:15%"  data-record="Phone" class="slds-is-resizable" scope="col" onclick="{!c.handleSorting}">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset">
+                            <span class="slds-assistive-text">Sort</span>
+                            <span class="slds-truncate" title="Phone">Phone</span>
+                            <aura:if isTrue="{!v.isSortByPhone}">
+                                <aura:if isTrue="{!v.isSortAsc}">
+                                    &#9650;
+                                    <aura:set attribute="else">
+                                        &#9660;
+                                    </aura:set>
+                                </aura:if> 
+                            </aura:if>
+                        </a>
+                    </th>
+                    
+                    <th style="width:15%"  data-record="Date__c" class="slds-is-resizable" scope="col" onclick="{!c.handleSorting}">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset">
+                            <span class="slds-assistive-text">Sort</span>
+                            <span class="slds-truncate" title="Date">Date</span>
+                            <aura:if isTrue="{!v.isSortByDate}">
+                                <aura:if isTrue="{!v.isSortAsc}">
+                                    &#9650;
+                                    <aura:set attribute="else">
+                                        &#9660;
+                                    </aura:set>
+                                </aura:if> 
+                            </aura:if>
+                        </a>
+                    </th>
+                    <th style="width:15%"  data-record="Ownership" class="slds-is-resizable" scope="col" onclick="{!c.handleSorting}">
+                        <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset">
+                            <span class="slds-assistive-text">Sort</span>
+                            <span class="slds-truncate" title="Ownership">Ownership</span>
+                            <aura:if isTrue="{!v.isSortByOwnership}">
+                                <aura:if isTrue="{!v.isSortAsc}">
+                                    &#9650;
+                                    <aura:set attribute="else">
+                                        &#9660;
+                                    </aura:set>
+                                </aura:if> 
+                            </aura:if>
+                        </a>
+                    </th>
+                    <th style="width:15%"   class="slds-is-resizable" scope="col" >
+                        <span class="slds-assistive-text">Sort</span>
+                        <span class="slds-truncate"  title="Delete">Delete</span>
+                    </th>
+                    
+                    <th style="width:15%"   class="slds-is-resizable" scope="col" >
+                        <span class="slds-assistive-text">Sort</span>
+                        <span class="slds-truncate"  title="Edit">Edit</span>
+                    </th>
+                    
+                    
+                    <th scope="col" style="width:10%">
+                        
+                    </th>
+                </tr>
+            </thead>
+            
+            <aura:if isTrue="{!not(empty(v.getAllData))}">
+                <tbody>    
+                    <aura:iteration items='{!v.getAllData}' var="acc" >
+                        <tr> 
+                            <td scope="row" class="slds-text-align--right" style="width:3.25rem;">
+                                <div class="slds-form-element">
+                                    <div class="slds-form-element__control">
+                                        <label class="slds-checkbox">
+                                            <ui:inputCheckbox text="{!acc.Id}" aura:id="boxPack" value="" change="{!c.checkboxSelect}"/>
+                                            <span class="slds-checkbox--faux"></span>
+                                            <span class="slds-form-element__label text"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </td>
+                            
+                            
+                            <td>{!acc.Name} </td>
+                            <td>{!acc.AccountNumber}</td>
+                            <td>{!acc.Phone} </td>
+                            <td>{!acc.Date__c}</td>
+                            <td>{!acc.Ownership}</td>
+                            
+                            <td>
+                                <!-- <lightning:button variant="brand" label="Delete" value="{!acc.Id}" title="Brand action" onclick="{! c.handleDelete }" />-->
+                                <lightning:buttonIcon iconName="utility:delete" 
+                                                      variant="Brand" 
+                                                      value="{!acc.Id}"
+                                                      onclick="{! c.handleDelete }" 
+                                                      alternativeText="Delete" 
+                                                      title="Brand action" />
+                                
+                                <aura:if isTrue="{!v.showConfirmDialog}">
+                                    <!--Start-->
+                                    <div role="dialog" class="slds-modal slds-fade-in-open ">
+                                        <div class="slds-modal__container">
+                                            <!--Modal Box Header Start-->
+                                            <header class="slds-modal__header">
+                                                <h1 class="slds-text-heading--medium">Please Confirm</h1>
+                                            </header>
+                                            <!--Header End-->
+                                            
+                                            <!--Start-->
+                                            <div class="slds-modal__content slds-p-around--medium">
+                                                <center>
+                                                    <b>Are you sure you want to delete this item?</b>
+                                                </center>
+                                            </div>
+                                            <!--End-->
+                                            
+                                            <!--Button Start-->
+                                            <footer class="slds-modal__footer">
+                                                
+                                                <lightning:button name='No' label='No' onclick='{!c.handlecanceldelete}'/>
+                                                
+                                                <lightning:button variant="brand" name='Yes' label='Yes' onclick='{!c.Confirmdelete}'/>
+                                            </footer>
+                                            <!--Modal Box Button End-->
+                                        </div>
+                                    </div>
+                                    <div class="slds-backdrop slds-backdrop--open"></div>            
+                                </aura:if>
+                                
+                                <!-- Confirm Dialog Box End-->              
+                                
+                                
+                            </td>
+                            <td>
+                                <!-- <lightning:button variant="brand" label="Edit" value="{!acc.Id}" title="Brand action" onclick="{! c.handleEdit }" />-->
+                                <lightning:buttonIcon iconName="utility:edit" 
+                                                      variant="Brand"
+                                                      value="{!acc.Id}"
+                                                      onclick="{! c.handleEdit }" 
+                                                      alternativeText="Edit"
+                                                      title="Brand action" />
+                            </td>
+                        </tr>
+                    </aura:iteration> 
+                </tbody>
+            </aura:if>
+        </table>
+        
+        <aura:if isTrue="{!empty(v.getAllData)}">
+            <div class="slds-align_absolute-center">
+                No records found
+            </div>
+        </aura:if>
+    </lightning:card>
+    <!--Pagination-->
+    <div class="slds-align_absolute-center">
+        <div class="slds-page-header" role="banner">
+            <div class="slds-float_right">            
+                <lightning:button disabled="{!v.PageNumber == 0}" variant="brand" aura:id="prevPage" label="Previous Page" onclick="{!c.handlePrev}" />            
+                <lightning:button disabled="{!v.PageNumber == v.TotalPages}" aura:id="nextPage" variant="brand" label="Next Page" onclick="{!c.handleNext}"/>
+            </div>  </div> </div>
+    <div>
+        <div class="slds-align_absolute-center">
+            <p class="slds-page-header" role="banner"> Page {!v.PageNumber} of {!v.TotalPages}</p>
+        </div></div>
+    
+</aura:component>

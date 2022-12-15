@@ -1,0 +1,43 @@
+<aura:component controller="DemoPracticeController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    
+    <aura:attribute name="propertyName" type="String"/>
+    <aura:attribute name="PropertyAddress" type="String"/>
+    <aura:attribute name="tmpRecId" type="String"/>
+    <aura:attribute name="propList" type="List"/>
+    <aura:attribute name="showEditButton" type="Boolean" default="false"/>
+    <aura:attribute name="showSubmitButton" type="Boolean" default="true"/>
+    
+    <!--Used For retrive the data-->
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:input name="input1" label="Enter Property Name" value="{!v.propertyName}"/>
+    <lightning:input name="input1" label="Enter Address" value="{!v.PropertyAddress}" />
+    <aura:if isTrue="{!v.showSubmitButton}">
+    <lightning:button variant="brand" label="Submit" title="Brand action" onclick="{! c.handleClick }" />
+    </aura:if>
+    <aura:if isTrue="{!v.showEditButton}">
+    <lightning:button variant="brand" label="Update" title="Brand action" onclick="{! c.submitEdit }" />
+    </aura:if>
+    
+    <table>
+        <tr>           
+            <th>Property Name</th>
+            <th>Property Address</th>
+            <th>Action</th>
+        </tr>
+        
+        <aura:iteration items='{!v.propList}' var="propList" >
+            <tr> 
+                <td>{!propList.Name} </td>
+                <td>{!propList.Street_Address__c} </td>
+                <td>
+                    <lightning:button variant="brand" label="Delete" value="{!propList.Id}" title="Brand action" onclick="{! c.handleDelete }" />
+                    <lightning:button variant="brand" label="Edit" value="{!propList.Id}" title="Brand action" onclick="{! c.handleEdit }" />
+                </td>
+            </tr>
+        </aura:iteration>
+    </table>
+    
+</aura:component>

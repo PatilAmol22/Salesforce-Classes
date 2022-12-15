@@ -1,0 +1,199 @@
+<aura:component controller="DemoAccountController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,lightning:actionOverride,force:lightningQuickAction,force:hasRecordId" 
+                access="global" >
+    
+    <aura:attribute name="AccountName" type="String"/>
+    <aura:attribute name="Phone" type="String"/> 
+    <aura:attribute name="AccountNumber" type="String"/>
+    <aura:attribute name="Date" type="Date"/>  
+    <aura:attribute name="AccountOwnership" type="String"/> 
+    <aura:attribute name="accList" type="List"/>
+    <aura:attribute name="tmpRecId" type="String"/>
+    <aura:attribute name="showEditButton" type="Boolean" default="false"/>
+    <aura:attribute name="showSubmitButton" type="Boolean" default="true"/>
+    <aura:attribute name="getAllData" type="List"/>
+    <aura:attribute name="PageNumber" type="integer" default="1"/>
+    <aura:attribute name="TotalPages" type="integer" default="0"/>
+    <aura:attribute name="TotalRecords" type="integer" default="0"/>
+    <aura:attribute name="RecordStart" type="integer" default="0"/>
+    <aura:attribute name="RecordEnd" type="integer" default="0"/>
+    
+    <!--Handler class-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-m-around_xx-large">
+        <div class="slds-float_right">
+            <ui:inputSelect aura:id="pageSize" label="Display Records Per Page: " change="{!c.onSelectChange}">
+                <ui:inputSelectOption text="10" label="10" value="true"/>
+                <ui:inputSelectOption text="15" label="15"/>
+                <ui:inputSelectOption text="20" label="20"/>
+            </ui:inputSelect>
+            <br/>
+        </div>
+        
+        <lightning:card variant="narrow" iconName="standard:account" title="Account Creator">
+            
+        </lightning:card>
+        
+        <lightning:card>
+            <div class="slds-box">
+                
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning:input name="Name" 
+                                         label="Account Name"
+                                         variant="label-inline"
+                                         placeholder="Enter Account" 
+                                         value="{!v.AccountName}" 
+                                         required="true" />
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning:input name="Account Number" 
+                                         label="Account Number"
+                                         variant="label-inline"
+                                         required="true"
+                                         maxlength="5"
+                                         pattern="[0-9]{5}"  
+                                         messageWhenPatternMismatch="The Account Number must contain 5 digits."
+                                         placeholder="Enter Account Number"
+                                         value="{!v.AccountNumber}" />
+                    </div>
+                </div>   
+                
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning:input type="tel"
+                                         name="Phone"
+                                         label="Phone"
+                                         variant="label-inline"
+                                         maxlength="10"
+                                         pattern="[0-9]{10}"
+                                         messageWhenPatternMismatch="The phone number must contain 11 digits." 
+                                         placeholder="Enter Phone Number"
+                                         value="{!v.Phone}"
+                                         />
+                    </div>
+                    
+                    
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning:input type="Date"
+                                         name="Date"
+                                         label="Date"
+                                         variant="label-inline"
+                                         required="true" 
+                                         placeholder="Enter Date"
+                                         value="{!v.Date}"
+                                         />
+                    </div></div>
+                
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning:select aura:id="pickType"  name="AccountOwnership" value="{!v.AccountOwnership}" label="Ownership" required="true">
+                            <option value="None">--None--</option>
+                            <option value="Public">Public</option>
+                            <option value="Private">Private</option>
+                            <option value="Subsidiary">Subsidiary</option>
+                            <option value="Other">Other</option>
+                        </lightning:select>
+                    </div></div></div>
+            
+            <!--Buttons Group-->
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_5-of-12"></div>
+                <aura:if isTrue="{!v.showSubmitButton}">
+                    <br/>
+                    <div class="slds-col slds-size_5-of-12">
+                        <lightning:button 
+                                          variant="brand"
+                                          label="Submit" 
+                                          title="Brand action" 
+                                          onclick="{! c.handleClick }" />
+                    </div> 
+                </aura:if> 
+                <br/>
+                <div class="slds-col slds-size_5-of-12">
+                    <aura:if isTrue="{!v.showEditButton}">
+                        
+                        <lightning:button variant="brand" 
+                                          label="Update"
+                                          title="Brand action"
+                                          onclick="{! c.submitEdit }" />
+                        
+                    </aura:if>
+                </div></div>
+        </lightning:card>
+        <br/><br/>         
+        <!--Table-->
+        <lightning:card  variant="narrow" iconName="action:preview" title="Account Information"   >
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <tr class="slds-text-title_caps"
+                        style="background-color:#5D7B9D;color:Black;font-weight:bold" >
+                        <th scope="col">
+                            <strong><div class="slds-truncate" title="Name">Name</div></strong>
+                        </th>
+                        <th scope="col">
+                            <strong><div class="slds-truncate" title="Phone">Phone</div></strong>
+                        </th>
+                        <th scope="col">
+                            <strong><div class="slds-truncate" title="Account Number">Account Number</div></strong> 
+                        </th>
+                        <th scope="col">
+                            <strong><div class="slds-truncate" title="Date">Date</div></strong> 
+                        </th>
+                        <th scope="col">
+                            <strong><div class="slds-truncate" title="AccountOwnership">Ownership</div></strong> 
+                        </th>
+                        <th scope="col">
+                            <strong><div class="slds-truncate" title="Delete">Delete</div></strong>
+                        </th>
+                        <th scope="col">
+                            <strong><div class="slds-truncate" title="Edit">Edit</div></strong>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items='{!v.getAllData}' var="acc" >
+                        <tr> 
+                            <td>{!acc.Name} </td>
+                            <td>{!acc.Phone} </td>
+                            <td>{!acc.AccountNumber}</td>
+                            <td>{!acc.Date__c}</td>
+                            <td>{!acc.Ownership}</td>
+                            
+                            <td>
+                                <!-- <lightning:button variant="brand" label="Delete" value="{!acc.Id}" title="Brand action" onclick="{! c.handleDelete }" />-->
+                                <lightning:buttonIcon iconName="utility:delete" 
+                                                      variant="Brand" 
+                                                      value="{!acc.Id}"
+                                                      onclick="{! c.handleDelete }" 
+                                                      alternativeText="Delete" 
+                                                      title="Brand action" />
+                            </td>
+                            <td>
+                                <!-- <lightning:button variant="brand" label="Edit" value="{!acc.Id}" title="Brand action" onclick="{! c.handleEdit }" />-->
+                                <lightning:buttonIcon iconName="utility:edit" 
+                                                      variant="Brand"
+                                                      value="{!acc.Id}"
+                                                      onclick="{! c.handleEdit }" 
+                                                      alternativeText="Edit"
+                                                      title="Brand action" />
+                            </td>
+                        </tr>
+                    </aura:iteration> 
+                </tbody>
+            </table>
+        </lightning:card>
+        <!--Pagination-->
+        <div class="slds-clearfix">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-float_right">            
+                    <lightning:button disabled="{!v.PageNumber == 0}" variant="brand" aura:id="prevPage" label="Prev" onclick="{!c.handlePrev}" />            
+                    <lightning:button disabled="{!v.PageNumber == v.TotalPages}" aura:id="nextPage" variant="brand" label="Next" onclick="{!c.handleNext}"/>
+                </div>
+                <p class="slds-page-header__title">{!v.RecordStart}-{!v.RecordEnd} of {!v.TotalRecords} | Page {!v.PageNumber} of {!v.TotalPages}</p>
+            </div>
+        </div>
+    </div>
+    
+</aura:component>
