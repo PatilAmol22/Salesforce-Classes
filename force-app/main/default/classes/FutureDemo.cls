@@ -15,7 +15,7 @@ public class FutureDemo {
         System.debug('inputParam:'+inputParam);
         
     }
-    @future
+    @future 
     public static void FutureMethod2(){
         System.debug('Inside The future method2');
         
@@ -24,6 +24,5 @@ public class FutureDemo {
     public static void FutureMethod3(){
         System.debug('Inside The future method3');
         
-    }
-    
+    } 
 }
