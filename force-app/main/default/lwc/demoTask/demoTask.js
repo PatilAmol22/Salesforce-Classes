@@ -22,7 +22,8 @@ export default class demoTask extends LightningElement{
     columns = COLUMNS;
     AccountId1;
     isModalOpen =false;
-    isShow = false;
+    showChild = false;
+
 
     connectedCallback()
     {
@@ -44,13 +45,13 @@ export default class demoTask extends LightningElement{
           
         const recId =  event.detail.row.Id;  
         const actionName = event.detail.action.name;  
-       console.log('recId:'+recId);
-        this.isShow = true;
+       console.log('recIdparent:'+recId);
+        this.showChild = true;
         this.AccountId1 = recId;
     } 
 
     handleClose(){
-        this.isShow = false;
+        this.showChild = false;
 
     }
 

@@ -15,13 +15,13 @@
                
             </div>
 
-            
+            <div if:true={showChild}>
                 <c-demo-task-popup
-                            is-modal-open={isShow}
                             onclose ={handleClose}
                             rec-id={AccountId1}>
 
                 </c-demo-task-popup>
+            </div>
                 <!-- Modal/Popup Box LWC starts here -->
                <!-- <section role="dialog" 
                         tabindex="-1" 
