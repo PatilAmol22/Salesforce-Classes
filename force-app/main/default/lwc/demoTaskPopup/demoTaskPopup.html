@@ -1,6 +1,6 @@
 <template>
 
-
+<template if:true={modal}>
 <section role="dialog" 
             tabindex="-1" 
             aria-labelledby="modal-heading-01" 
@@ -68,7 +68,8 @@
                     </div>
                 
                 <lightning-button label="New"
-                                  variant="brand">
+                                  variant="brand"
+                                  onclick={handleClick}>
                 </lightning-button>
         </div>
         </div>
@@ -86,6 +87,9 @@
         </div>
     </div>
 
+    <div if:true={showChild1}>
+        <!-- call Component of Prashant  -->
+    </div>
         <!-- Modal/Popup Box LWC footer starts here -->
         <footer class="slds-modal__footer">
             <lightning-button variant="destructive"
@@ -97,4 +101,4 @@
     </section>
     <div class="slds-backdrop slds-backdrop_open"></div>
     </template>
-    
+</template>

@@ -1,4 +1,5 @@
 import { LightningElement, api, track,wire} from 'lwc';
+import { CloseActionScreenEvent } from 'lightning/actions';
 import getAccountList from '@salesforce/apex/AccountHelper1.getAccountList';
 
 const VALUE = [  
@@ -24,6 +25,9 @@ export default class DemoTaskPopup extends LightningElement {
     @api recId;
     @track accdata=[];
     accSet=[];
+    showChild1 = false;
+     modal = true;
+
 
     connectedCallback(){
         console.log('recId::'+this.recId);
@@ -48,8 +52,13 @@ export default class DemoTaskPopup extends LightningElement {
     
     closeModal(){
        // this.show =true;
-       this.dispatchEvent(new CustomEvent('close'));
-       
+       //this.dispatchEvent(new CustomEvent('close'));
+       this.modal = false;
+       this.dispatchEvent(new CloseActionScreenEvent());
 
+    }
+
+    handleClick(){
+        this.showChild1 = true;
     }
 }

@@ -54,6 +54,9 @@ export default class demoTask extends LightningElement{
         this.showChild = false;
 
     }
+    handleClick(){
+        this.showChild = true;
+    }
 
     
 }

@@ -14,7 +14,12 @@
                 </div> 
                
             </div>
-
+            <lightning-card>
+            <lightning-button label="Search"
+            variant="brand"
+            onclick={handleClick}>
+            </lightning-button>
+        </lightning-card>
             <div if:true={showChild}>
                 <c-demo-task-popup
                             onclose ={handleClose}
