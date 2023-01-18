@@ -26,7 +26,7 @@ export default class DemoTaskPopup extends LightningElement {
     @track accdata=[];
     accSet=[];
     showChild1 = false;
-     modal = true;
+    modal = true;
 
 
     connectedCallback(){

@@ -20,7 +20,7 @@
             <div class="slds-page-header__name">
             <div class="slds-page-header__name-title">
             <h1 style="padding-bottom: 5px;">
-            <span class="slds-page-header__title slds-truncate" title="Demand Generation" style="margin-top:12px;">Contract Number - 1236540</span>
+            <span class="slds-page-header__title slds-truncate" title="Demand Generation" style="margin-top:12px;" >Contract Number - {demand.contractNumber}</span>
             <span>Demand Generation</span>
             </h1>
             </div>
@@ -42,47 +42,52 @@
             </div>-->
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="text" label="Document Number(SFDC)" value="785451256" disabled="true"></lightning-input>
+                <lightning-input type="text" label="Document Number(SFDC)" value={demand.documentNumber} disabled="true" onchange={updatevalue} name="Document Number(SFDC)"></lightning-input>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="text" label="Document Number(SAP)" value="" ></lightning-input>
+                <lightning-input type="text" label="Document Number(SAP)" value={demand.SapDocumentNumber} onchange={updatevalue} name="Document Number(SAP)"></lightning-input>
             </div>
 
      </div>
 
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
         <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-            <lightning-input type="text" label="Distributor Name" value="" ></lightning-input>
+            <lightning-input type="text" label="Distributor Name" value={demand.distributorName}    onchange={updatevalue} name="Distributor Name" ></lightning-input>
+
         </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
-                <label for="FieldSelect" class="slds-form-element__label slds-no-flex">
-                    Type</label>
-                 <select class="slds-select">
-                     <option value="Commercial">Commercial</option>
-                     <option value="Quality">Quality</option>
-                     <option value="Credit">Credit</option>
-                     <option value="System">System</option>
-                     <option value="Transportation">Transportation</option>
-                 </select>
+                <lightning-combobox
+             name="Type"
+             label="Type"
+             placeholder="Select"
+             value={demand.type}
+             onchange={updatevalue}
+             options={type}
+    >
+    </lightning-combobox>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="text" label="Event Name" value="" ></lightning-input>
+                <lightning-input type="text" label="Event Name" value={demand.eventName} name="Event Name" onchange={updatevalue}></lightning-input>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
-                <label for="FieldSelect" class="slds-form-element__label slds-no-flex">
-                    Event Type</label>
-                 <select class="slds-select">
-                     <option value="Visit to the Headquarters, Factory">Visit to the Headquarters, Factory</option>
-                     <option value="Cofraternization events">Cofraternization events</option>
-                     <option value="Congress, convention, fair">Congress, convention, fair</option>
-                     <option value="Field Commercial Activities">Field Commercial Activities</option>
-                     <option value="Product Trainning, Commercial Meeting">Product Trainning, Commercial Meeting</option>
-                     <option value="Other">Other</option>
-                </select>
+                <lightning-combobox
+                name="Event Type"
+                label="Event Type"
+                placeholder="Select"
+                value={demand.eventType}
+                onchange={handleChange}
+                options={eventType}
+    >
+             </lightning-combobox>
+             <template for:each={allValues} for:item="val">
+                <lightning-pill key={val} name={val} label={val} onremove={handleRemove}></lightning-pill>
+              </template>
+
+
             </div>
 
         </div>
@@ -91,33 +96,29 @@
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
-                <label for="FieldSelect" class="slds-form-element__label slds-no-flex">
-                    Status</label>
-                 <select class="slds-select">
-                     <option value="Open">Open</option>
-                     <option value="Awaiting At MKT Approval">Awaiting At MKT Approval</option>
-                     <option value="Awaiting At GR Approval">Awaiting At GR Approval</option>
-                     <option value="Awaiting At BU Approval">Awaiting At BU Approval</option>
-                     <option value="Awaiting At MKT Access Approval">Awaiting At MKT Access Approval</option>
-                     <option value="Awaiting At Realization">Awaiting At Realization</option>
-                     <option value="Completed">Completed</option>
-                 </select>
+            <lightning-combobox
+               name="Status"
+               label="Status"
+               placeholder="Select"
+               value={demand.status}
+               onchange={updatevalue}
+               options={status} >
+            </lightning-combobox>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
-                <label for="FieldSelect" class="slds-form-element__label slds-no-flex">
-                    Sub Status</label>
-                 <select class="slds-select">
-
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                     
-                 </select>
+                <lightning-combobox
+                name="Sub Status"
+                label="Sub Status"
+                placeholder="Select"
+                value={demand.subStatus}
+                onchange={updatevalue}
+                options={subStatus} >
+    </lightning-combobox>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="text" label="Error Message" value="" ></lightning-input>
+                <lightning-input type="text" label="Error Message" value="" onchange={updatevalue} name="Error Message"></lightning-input>
             </div>
 
         </div>
@@ -125,7 +126,7 @@
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 slds-form-element__label slds-no-flex">
-                <lightning-textarea type="text" label="Participate Profile" value="" ></lightning-textarea>
+                <lightning-textarea type="text" label="Participate Profile" value={demand.participateProfile} onchange={updatevalue} name="Participate Profile"></lightning-textarea>
             </div>
 
         </div>
@@ -133,25 +134,25 @@
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
 
         <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-            <lightning-input type="Number" label="Total Value R$" value="" ></lightning-input>
+            <lightning-input type="Number" label="Total Value R$" value={demand.totalValue}  onchange={updatevalue} name="Total Value R$"></lightning-input>
         </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="Number" label="Planned Value R$" value="" ></lightning-input>
+                <lightning-input type="Number" label="Planned Value R$" value={demand.plannedValue} onchange={updatevalue} name="Planned Value R$"></lightning-input>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="Number" label="Budget Available R$" value="" ></lightning-input>
+                <lightning-input type="Number" label="Budget Available R$" value={demand.budgetAvailable}  onchange={updatevalue} name="Budget Available R$"></lightning-input>
             </div>
             
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="Number" label="Actual Budget R$" value="" ></lightning-input>
+                <lightning-input type="Number" label="Actual Budget R$" value={demand.actualBudget} onchange={updatevalue} name="Actual Budget R$"></lightning-input>
             </div>
 
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="Number" label="Balance $" value="" ></lightning-input>
+                <lightning-input type="Number" label="Balance $" value={demand.balance} onchange={updatevalue} name="Balance $" ></lightning-input>
             </div>
 
             
@@ -161,7 +162,7 @@
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 slds-form-element__label slds-no-flex">
-                <lightning-textarea type="text" label="Important Information" value="" ></lightning-textarea>
+                <lightning-textarea type="text" label="Important Information" value={demand.importantInformation}  onchange={updatevalue} name="Important Information"></lightning-textarea>
             </div>
 
         </div>
@@ -170,28 +171,35 @@
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
             
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
-                <label for="FieldSelect" class="slds-form-element__label slds-no-flex">
-                    Credit Letter</label>
-                 <select class="slds-select">
-                     <option value="Yes">Yes</option>
-                     <option value="No">No</option>
-                </select>
+                      
+    <lightning-combobox
+        name="Credit Letter"
+        label="Credit Letter"
+        placeholder="Select"
+        value={demand.creditLetter}
+        onchange={updatevalue}
+        options={creditOption}
+    >
+    </lightning-combobox>
+    
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
-                <label for="FieldSelect" class="slds-form-element__label slds-no-flex">
-                    Payment to Supplier</label>
-                 <select class="slds-select">
-                     <option value="Yes">Yes</option>
-                     <option value="No">No</option>
-                </select>
+                <lightning-combobox
+               name="Payment to Supplier"
+               label="Payment to Supplier"
+               placeholder="Select"
+              value={demand.paymenttoSupplier}
+              onchange={updatevalue}
+              options={paymentToSuplier} >
+    </lightning-combobox>
             </div>
 
   </div>
 
 <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px; text-align:center;">
  <div class="slds-col slds-theme_default slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12" style="margin: 0 auto; text-align:center;">
-<lightning-button variant="Brand" label="Submit" title="Submit" class="slds-m-right_x-small"></lightning-button>
+<lightning-button variant="Brand" label="Submit" onclick={handleSave} title="Submit" class="slds-m-right_x-small"></lightning-button>
 <lightning-button variant="nutral" label="Cancel" title="Cancel" class="slds-m-right_x-small"></lightning-button>
 </div>
 </div>
