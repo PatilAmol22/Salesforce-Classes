@@ -4,3 +4,7 @@
     padding:10 10;
     margin:20px;
    }*/
+
+   .required {
+    color: red;
+}

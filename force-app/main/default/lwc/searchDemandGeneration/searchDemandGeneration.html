@@ -1,6 +1,6 @@
 <template>
-    <lightning-quick-action-panel header="Search Demand Generation">
-        
+    <lightning-quick-action-panel header="Search Demand Generation" >
+        <div class="slds-box">
             <div class="slds-grid slds-gutters ">
                     <lightning-input class="slds-col slds-size_5-of-12" 
                                     style="font-weight:bold"
@@ -31,23 +31,26 @@
         </div>
 
 </br>
-    <div class="slds-box">
+    
                     <lightning-datatable key-field="Id"
                                     data={DGData} 
                                     columns={columns}  
-                                    hide-checkbox-column="true">  
-                    </lightning-datatable>          
-    </div>
+                                    hide-checkbox-column="true"
+                                    onrowaction={handleRowAction}>
 
-<!--  </br>
-<div class="slds-float_left"> 
-    <footer  class="slds-modal__footer">
+                    </lightning-datatable>          
+                </div>
+      </br>
+
+<div class="slds-float_right"> 
+    <footer >
         
         <lightning-button variant="destructive"
                         label="close" 
                         onclick={closeModal} 
                         ></lightning-button>                       
     </footer>
-    </div>   -->
+    </div>  
+
 </lightning-quick-action-panel>
 </template>

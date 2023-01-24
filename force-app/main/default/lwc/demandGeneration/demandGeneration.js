@@ -9,7 +9,28 @@ import Status__c from '@salesforce/schema/Demand_Generation__c.Status__c';
 import Sub_Status__c from '@salesforce/schema/Demand_Generation__c.Sub_Status__c';
 import Payment_to_Supplier__c from '@salesforce/schema/Demand_Generation__c.Payment_to_Supplier__c';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
-
+import Demand_Generation from '@salesforce/label/c.Demand_Generation';
+import Contract_Number from '@salesforce/label/c.Contract_Number';
+import Document_Number_SFDC from '@salesforce/label/c.Document_Number_SFDC';
+import Document_Number_SAP from '@salesforce/label/c.Document_Number_SAP';
+import Distributor_Name from '@salesforce/label/c.Distributor_Name';
+import Type from '@salesforce/label/c.Type';
+import Event_Name from '@salesforce/label/c.Event_Name';
+import Event_Type from '@salesforce/label/c.Event_Type';
+import Status from '@salesforce/label/c.Status';
+import Sub_Status from '@salesforce/label/c.Sub_Status';
+import Error_Message from '@salesforce/label/c.Error_Message';
+import Participate_Profile from '@salesforce/label/c.Participate_Profile';
+import Total_Value_R from '@salesforce/label/c.Total_Value_R';
+import Planned_Value_R from '@salesforce/label/c.Planned_Value_R';
+import Budget_Available_R from '@salesforce/label/c.Budget_Available_R';
+import Actual_Budget_R from '@salesforce/label/c.Actual_Budget_R';
+import Balance_new from '@salesforce/label/c.Balance_new';
+import Important_Information from '@salesforce/label/c.Important_Information';
+import Credit_Letter from '@salesforce/label/c.Credit_Letter';
+import Payment_to_Supplier from '@salesforce/label/c.Payment_to_Supplier';
+import Submit from '@salesforce/label/c.Submit';
+import Cancel from '@salesforce/label/c.Cancel';
 
 
 export default class DemandGeneration extends LightningElement {
@@ -21,8 +42,36 @@ export default class DemandGeneration extends LightningElement {
    @track status=[];
    @track subStatus=[];
    @track paymentToSuplier=[];
-   @track serarchField = 'Distributor__c';
+   @track filter1 = '';
+   @track acc ={id:'',name:'',disable : false};
+   @track _newdgid;
+   @track _newdgname;
    
+   @track labels = {
+    Demand_Generation:Demand_Generation,
+    Contract_Number:Contract_Number,
+    Document_Number_SFDC:Document_Number_SFDC,
+    Document_Number_SAP:Document_Number_SAP,
+    Distributor_Name:Distributor_Name,
+    Type:Type,
+    Event_Name:Event_Name,
+    Event_Type:Event_Type,
+    Status:Status,
+    Sub_Status:Sub_Status,
+    Error_Message:Error_Message,
+    Participate_Profile:Participate_Profile,
+    Total_Value_R:Total_Value_R,
+    Planned_Value_R:Planned_Value_R,
+    Budget_Available_R:Budget_Available_R,
+    Actual_Budget_R:Actual_Budget_R,
+    Balance_new:Balance_new,
+    Important_Information:Important_Information,
+    Credit_Letter:Credit_Letter,
+    Payment_to_Supplier:Payment_to_Supplier, 
+    Submit:Submit,
+    Cancel:Cancel
+
+    }
     @wire(getPicklistValues, {recordTypeId: '012000000000000AAA', fieldApiName: Credit_Letter__c })
     propertyOrFunction({error,data}){ 
      if(data)
@@ -97,10 +146,50 @@ export default class DemandGeneration extends LightningElement {
 
 
     @track demand={};
+    @track recordId='';
+    @track demandname='';
     
     connectedCallback() {
     this.getDemand();
+    this.recordId=this._newdgid;
+    this.demandname=this._newdgname;
+
+    this.filter1 = `Account.Sales_Org_Code__c = '5191' and Name !='' ORDER BY Name ASC NULLS LAST limit 500`;
+
+    console.log('parent record in connected',this.recordId);
+    console.log('parent record name connected',this.demandname);
+    
     }
+    renderedCallback()
+    {
+      this.recordId=this._newdgid;
+      this.demandname=this._newdgname;  
+
+      console.log('parent record id in render',this.recordId);
+      console.log('parent record name in render',this.demandname);
+            
+    }
+    
+     get newdgid()
+     {
+        return this._newdgid;
+        }
+    @api set newdgid(value)
+     {
+       this._newdgid=value;
+       
+
+     }
+     get newdgname()
+     {
+        return this._newdgname;
+        }
+    @api set newdgname(value)
+     {
+       this._newdgname=value;
+       
+
+     }
 
     getDemand() {
             getDemandGeneration({})
@@ -122,11 +211,14 @@ export default class DemandGeneration extends LightningElement {
         handleChange(event)
         {
           this.value=event.target.value;
-          this.demand.eventType=this.value;
+
+          
           if(!this.allValues.includes(this.value))
             this.allValues.push(this.value);
-            
 
+          // this.demand.eventType=this.allValues.join(';').toString();
+           console.log('picklist value is',this.demand.eventType);
+          
           this.modifyOptions();
         }
       
@@ -135,6 +227,7 @@ export default class DemandGeneration extends LightningElement {
           this.value='';
           const valueRemoved=event.target.name;
           this.allValues.splice(this.allValues.indexOf(valueRemoved),1);
+          //this.demand.eventType=this.allValues.join(';').toString();
           this.modifyOptions();
         }
       
@@ -142,6 +235,7 @@ export default class DemandGeneration extends LightningElement {
         {
           this.eventType=this.eventMaster.filter(elem=>{
             if(!this.allValues.includes(elem.value))
+            this.demand.eventType=this.allValues.join(';').toString();
               return elem;
           })
         }
@@ -156,14 +250,16 @@ export default class DemandGeneration extends LightningElement {
 
           let value=event.target.value;
           let field=event.target.name;
+          this.demand.contractName=this.recordId;
+          console.log('contract id is',this.demand.contractName);
           if(field=='Document Number(SAP)')
           {
             this.demand.SapDocumentNumber=value;
           }
-          if(field=='Distributor Name')
-          {
-            this.demand.distributorName=value;
-          }
+        //  if(field=='Distributor Name')
+        //  {
+        //    this.demand.distributorName=value;
+        //  }
           
           if(field=='Type')
           {
@@ -224,9 +320,7 @@ export default class DemandGeneration extends LightningElement {
             this.demand.paymenttoSupplier=value;
           }
 
-          
-          
-          
+             
 
         }
 
@@ -271,8 +365,9 @@ export default class DemandGeneration extends LightningElement {
       this.flag = 'None';
       this.accountName = event.detail.recName;
       this.accountId = event.detail.recId;
-      this.demand.distributorName=this.accountName;
-  
+      console.log();
+
+      
   }
 
      handleRemoveAccount(event){
@@ -280,11 +375,24 @@ export default class DemandGeneration extends LightningElement {
       this.accountName = '';
       this.accountId = '';
   }
+  
+  
+  handleAccount(event){
+    this.acc.id = event.detail.recId;
+    this.acc.name = event.detail.recName;
+    this.demand.distributorName=this.acc.id;
+  
+    console.log('the account id is',this.acc.name);
+    console.log(`Id ${this.acc.id} name ${this.acc.name}`);
+}
 
 
 
-
-
+  handleRemoveSalesRep(){
+    console.log('Remove called')
+    this.acc.id = '';
+    this.acc.name = '';
+  }
 
 
 }

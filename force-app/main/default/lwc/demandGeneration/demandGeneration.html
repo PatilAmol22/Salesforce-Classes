@@ -20,8 +20,8 @@
             <div class="slds-page-header__name">
             <div class="slds-page-header__name-title">
             <h1 style="padding-bottom: 5px;">
-            <span class="slds-page-header__title slds-truncate" title="Demand Generation" style="margin-top:12px;" >Contract Number - {demand.contractNumber}</span>
-            <span>Demand Generation</span>
+            <span class="slds-page-header__title slds-truncate" title="Demand Generation" style="margin-top:12px;" >{labels.Contract_Number} - {demandname}</span>
+            <span>{labels.Demand_Generation}</span>
             </h1>
             </div>
             </div>
@@ -42,25 +42,26 @@
             </div>-->
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="text" label="Document Number(SFDC)" value={demand.documentNumber} disabled="true" onchange={updatevalue} name="Document Number(SFDC)"></lightning-input>
+                <lightning-input type="text" label={labels.Document_Number_SFDC} value={demand.documentNumber} disabled="true" onchange={updatevalue} name="Document Number(SFDC)"></lightning-input>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="text" label="Document Number(SAP)" value={demand.SapDocumentNumber} onchange={updatevalue} name="Document Number(SAP)"></lightning-input>
+                <lightning-input type="text" label={labels.Document_Number_SAP} value={demand.SapDocumentNumber} onchange={updatevalue} name="Document Number(SAP)"></lightning-input>
             </div>
 
      </div>
 
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
         <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-            <lightning-input type="text" label="Distributor Name" value={demand.distributorName}    onchange={updatevalue} name="Distributor Name" ></lightning-input>
+            <span>Customer Name</span>
+            <c-lookupcmp placeholder='Customer Name' iconname='standard:product' multiselect=false sobject='Account' fieldname='Name' filter={filter1} displayfield='Name' onselected={handleAccount} singleselectedrec={acc.name} onremove={handleRemoveSalesRep} cmpwidth='long' dependent=false disable={acc.disable} value={demand.distributorName} ></c-lookupcmp>
 
         </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
                 <lightning-combobox
              name="Type"
-             label="Type"
+             label={labels.Type}
              placeholder="Select"
              value={demand.type}
              onchange={updatevalue}
@@ -70,13 +71,13 @@
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="text" label="Event Name" value={demand.eventName} name="Event Name" onchange={updatevalue}></lightning-input>
+                <lightning-input type="text" label={labels.Event_Name} value={demand.eventName} name="Event Name" onchange={updatevalue}></lightning-input>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
                 <lightning-combobox
                 name="Event Type"
-                label="Event Type"
+                label={labels.Event_Type}
                 placeholder="Select"
                 value={demand.eventType}
                 onchange={handleChange}
@@ -98,7 +99,7 @@
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
             <lightning-combobox
                name="Status"
-               label="Status"
+               label={labels.Status}
                placeholder="Select"
                value={demand.status}
                onchange={updatevalue}
@@ -109,7 +110,7 @@
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
                 <lightning-combobox
                 name="Sub Status"
-                label="Sub Status"
+                label={labels.Sub_Status}
                 placeholder="Select"
                 value={demand.subStatus}
                 onchange={updatevalue}
@@ -118,7 +119,7 @@
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="text" label="Error Message" value="" onchange={updatevalue} name="Error Message"></lightning-input>
+                <lightning-input type="text" label={labels.Error_Message} value="" onchange={updatevalue} name="Error Message"></lightning-input>
             </div>
 
         </div>
@@ -126,7 +127,7 @@
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 slds-form-element__label slds-no-flex">
-                <lightning-textarea type="text" label="Participate Profile" value={demand.participateProfile} onchange={updatevalue} name="Participate Profile"></lightning-textarea>
+                <lightning-textarea type="text" label={labels.Participate_Profile} value={demand.participateProfile} onchange={updatevalue} name="Participate Profile"></lightning-textarea>
             </div>
 
         </div>
@@ -134,25 +135,25 @@
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
 
         <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-            <lightning-input type="Number" label="Total Value R$" value={demand.totalValue}  onchange={updatevalue} name="Total Value R$"></lightning-input>
+            <lightning-input type="Number" label={labels.Total_Value_R} value={demand.totalValue}  onchange={updatevalue} name="Total Value R$" min="0"></lightning-input>
         </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="Number" label="Planned Value R$" value={demand.plannedValue} onchange={updatevalue} name="Planned Value R$"></lightning-input>
+                <lightning-input type="Number" label={labels.Planned_Value_R} value={demand.plannedValue} onchange={updatevalue} name="Planned Value R$" min="0"></lightning-input>
             </div>
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="Number" label="Budget Available R$" value={demand.budgetAvailable}  onchange={updatevalue} name="Budget Available R$"></lightning-input>
+                <lightning-input type="Number" label={labels.Budget_Available_R} value={demand.budgetAvailable}  onchange={updatevalue} name="Budget Available R$" min="0"></lightning-input>
             </div>
             
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="Number" label="Actual Budget R$" value={demand.actualBudget} onchange={updatevalue} name="Actual Budget R$"></lightning-input>
+                <lightning-input type="Number" label={labels.Actual_Budget_R} value={demand.actualBudget} onchange={updatevalue} name="Actual Budget R$" min="0"></lightning-input>
             </div>
 
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-form-element__label slds-no-flex">
-                <lightning-input type="Number" label="Balance $" value={demand.balance} onchange={updatevalue} name="Balance $" ></lightning-input>
+                <lightning-input type="Number" label={labels.Balance_new} value={demand.balance} onchange={updatevalue} name="Balance $" min="0"></lightning-input>
             </div>
 
             
@@ -162,7 +163,7 @@
         <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px;">
 
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12 slds-form-element__label slds-no-flex">
-                <lightning-textarea type="text" label="Important Information" value={demand.importantInformation}  onchange={updatevalue} name="Important Information"></lightning-textarea>
+                <lightning-textarea type="text" label={labels.Important_Information} value={demand.importantInformation}  onchange={updatevalue} name="Important Information"></lightning-textarea>
             </div>
 
         </div>
@@ -174,7 +175,7 @@
                       
     <lightning-combobox
         name="Credit Letter"
-        label="Credit Letter"
+        label={labels.Credit_Letter}
         placeholder="Select"
         value={demand.creditLetter}
         onchange={updatevalue}
@@ -187,7 +188,7 @@
             <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 ">
                 <lightning-combobox
                name="Payment to Supplier"
-               label="Payment to Supplier"
+               label={labels.Payment_to_Supplier}
                placeholder="Select"
               value={demand.paymenttoSupplier}
               onchange={updatevalue}
@@ -199,8 +200,8 @@
 
 <div class="slds-box slds-theme_default slds-grid slds-gutters slds-wrap" style="margin-top: 10px; text-align:center;">
  <div class="slds-col slds-theme_default slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_12-of-12" style="margin: 0 auto; text-align:center;">
-<lightning-button variant="Brand" label="Submit" onclick={handleSave} title="Submit" class="slds-m-right_x-small"></lightning-button>
-<lightning-button variant="nutral" label="Cancel" title="Cancel" class="slds-m-right_x-small"></lightning-button>
+<lightning-button variant="Brand" label={labels.Submit} onclick={handleSave} title="Submit" class="slds-m-right_x-small"></lightning-button>
+<lightning-button variant="nutral" label={labels.Cancel} title="Cancel" class="slds-m-right_x-small"></lightning-button>
 </div>
 </div>
 

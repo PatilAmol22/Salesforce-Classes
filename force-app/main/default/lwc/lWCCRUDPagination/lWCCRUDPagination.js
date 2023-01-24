@@ -38,6 +38,7 @@ import Show_Related_Accounts from '@salesforce/label/c.Show_Related_Accounts';
 
 // row actions
 const actions = [   
+
         { label: 'Edit', name: 'edit'}, 
         { label: 'Delete', name: 'delete'}
         ];
@@ -622,16 +623,20 @@ async handleSave(event) {
         return { fields };
     });
 
+    
+
     // Clear all datatable draft values
     this.draftValues = [];
 
     try {
         // Update all records in parallel thanks to the UI API
         const recordUpdatePromises = records.map((record) =>
-            updateRecord(record)
+        updateRecord(record)
+           
         );
+        console.log('before Promise',recordUpdatePromises)
         await Promise.all(recordUpdatePromises);
-
+        console.log('After Promise')
         // Report success with a toast
         this.dispatchEvent(
             new ShowToastEvent({
@@ -645,6 +650,7 @@ async handleSave(event) {
         return refreshApex(this.refreshTable);
         // await refreshApex(this.Accounts);
     } catch (error) {
+        console.log('error:'+error.body.message)
         this.dispatchEvent(
             new ShowToastEvent({
                 title: 'Error updating or reloading Accounts',
@@ -652,7 +658,11 @@ async handleSave(event) {
                 variant: 'error'
             })
         );
+
+        
     }
+
+   
 }
 
 //Dynamic Search Functionality
@@ -735,6 +745,22 @@ searchAccount(){
 
         
     }
+
+    // validateFields(event) {
+    //     // Get the edited record
+
+    //     const record = event.detail.draftValues[0];
+    //     console.log('Validate',records)
+    //     // Check if the field is empty
+    //     if (!record.fieldName) {
+    //         // Show an error message
+    //         this.error = 'Field is required';
+    //         return false;
+    //     }
+    //     // Clear the error message
+    //     this.error = '';
+    //     return true;
+    // }
 }
 
 
