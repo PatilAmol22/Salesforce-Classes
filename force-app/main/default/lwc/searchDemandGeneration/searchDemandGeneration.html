@@ -1,5 +1,8 @@
 <template>
-    <lightning-quick-action-panel header="Search Demand Generation" >
+     <!-- Aura Component Call LWC  -->
+    <!-- <div if:true={ShowDGComponent}> -->
+
+    <lightning-quick-action-panel  header="Search Demand Generation" >
         <div class="slds-box">
             <div class="slds-grid slds-gutters ">
                     <lightning-input class="slds-col slds-size_5-of-12" 
@@ -25,7 +28,8 @@
                 <div style="margin-top: 5px;">
                     <lightning-button label="New"
                                     variant="brand"
-                                    onclick={navigateToEditTab}>
+                                    onclick={navigateToEditTab}
+                                    disabled={disableButton}>
                     </lightning-button>
                 </div>
         </div>
@@ -53,4 +57,5 @@
     </div>  
 
 </lightning-quick-action-panel>
+<!-- </div> -->
 </template>

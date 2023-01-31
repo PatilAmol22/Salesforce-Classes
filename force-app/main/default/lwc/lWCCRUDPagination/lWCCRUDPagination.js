@@ -441,7 +441,7 @@ previousHandler() {
         this.page = this.page - 1; //decrease page by 1
         this.displayRecordPerPage(this.page);
     }
-    var selectedIds = [];
+    var selectedIds = [];   
     for (var i = 0; i < this.allSelectedRows.length; i++) {
         selectedIds.push(this.allSelectedRows[i].Id);
     }
