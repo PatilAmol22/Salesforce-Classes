@@ -222,7 +222,9 @@
 </div>
 
 
-<lightning-datatable data-id="table"
+    
+<lightning-datatable 
+                    data-id="table"
                     key-field="Id" 
                     data={data} 
                     columns={columns} 
@@ -234,6 +236,11 @@
                     onsort={sortColumns}
                     onsave={handleSave}
                     draft-values={draftValues}>
+</lightning-datatable>
+            
+                
+       
+
 
                     <!-- <template for:each={data} for:item="item">
                         <tr key={item.id}>
@@ -242,7 +249,7 @@
                             </td>
                         </tr>
                     </template> -->
-</lightning-datatable>
+
 
 <div class="slds-m-around_medium">
 <center>

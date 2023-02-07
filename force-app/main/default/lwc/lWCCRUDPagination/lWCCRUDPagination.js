@@ -46,7 +46,7 @@ const actions = [
 const columns = [
         { label: Account_Name, fieldName: 'Name', 
         type: 'text', sortable: true, 
-        editable: true, 
+        //editable: true, 
         hideDefaultActions: "true",
         
         
@@ -54,14 +54,14 @@ const columns = [
         { label: Account_Number, 
             fieldName: 'AccountNumber',
             type: 'text', sortable: true, 
-            editable: true, 
+           // editable: true, 
             hideDefaultActions: "true"
 
         },
         { label: Phone,
             fieldName: 'Phone', 
             sortable: true , 
-            editable: true,
+           // editable: true,
             hideDefaultActions: "true",
             cellAttributes: { 
                 iconName: 'utility:call' 
@@ -72,7 +72,7 @@ const columns = [
         fieldName: 'Date__c',
         type:'date-local',
         sortable: true,
-        editable: true,
+        // editable: true,
         hideDefaultActions: "true",
         cellAttributes: { 
             iconName: 'utility:event' 
@@ -93,7 +93,7 @@ const columns = [
         { label: Ownership, 
             fieldName: 'Ownership',
             sortable: true, 
-            editable: true,
+           // editable: true,
             hideDefaultActions: "true"
 
         },

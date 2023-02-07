@@ -25,6 +25,7 @@
                     </lightning-input>
 
                     &nbsp;
+                    
                 <div style="margin-top: 5px;">
                     <lightning-button label="New"
                                     variant="brand"
@@ -32,7 +33,7 @@
                                     disabled={disableButton}>
                     </lightning-button>
                 </div>
-        </div>
+            </div>
 
 </br>
     
@@ -43,18 +44,18 @@
                                     onrowaction={handleRowAction}>
 
                     </lightning-datatable>          
-                </div>
-      </br>
+        </div>
+     
 
-<div class="slds-float_right"> 
-    <footer >
+        <div class="slds-float_right" style="margin-top: 15px;"> 
+                <footer >
         
-        <lightning-button variant="destructive"
+                    <lightning-button variant="destructive"
                         label="close" 
-                        onclick={closeModal} 
-                        ></lightning-button>                       
-    </footer>
-    </div>  
+                        onclick={closeModal} >
+                    </lightning-button>                       
+                </footer>
+        </div>  
 
 </lightning-quick-action-panel>
 <!-- </div> -->
