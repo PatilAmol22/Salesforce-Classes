@@ -1,3 +1,4 @@
+import '@lwc/synthetic-shadow';
 import { LightningElement, wire, api, track } from 'lwc';
 import { refreshApex } from '@salesforce/apex';
 import { updateRecord } from 'lightning/uiRecordApi';
