@@ -63,7 +63,7 @@ if(data){
   this.dgname=this.data.Name;
   console.log('data name',this.dgname);
     
-  let instance = window.location.origin;
+  //let instance = window.location.origin;
   if(this.data.Demand_Generations__r != null){
     console.log('inside IF:',JSON.parse(JSON.stringify(this.data.Demand_Generations__r)))
 
@@ -82,6 +82,7 @@ AvailableBudget({data, error}){
   if(data){
     console.log('inside AvailableBudget If:',data);
     this.balance=data.resBudgetAvailable;
+    // eslint-disable-next-line radix
     if(parseInt(this.balance) > 0){
       console.log('Inside Budget IF');
       this.disableButton = false;
