@@ -70,7 +70,7 @@ public class AccHandler {
     }*/
     
     @AuraEnabled
-    public static void deleteAccounts(List<Id> lstAccIds){
+    public static void FeleteAccounts(List<Id> lstAccIds){
         try {
             List<Account> lstAccToDelete = new List<Account>();
             System.debug('lstConIds  ---->' + lstAccIds );
