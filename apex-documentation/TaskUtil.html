@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Apex Documentation</title>
+    <meta charset="UTF-8">
+    <script type="module" src="./assets/index.js"></script>
+    <script type="module" src="./assets/search-idx.js"></script>
+    <script type="module" src="./assets/search.js"></script>
+    <script charset="UTF-8" src="./assets/highlight.js"></script>
+    <script charset="UTF-8" src="./assets/mark.js"></script>
+    <script charset="UTF-8" src="./assets/lunr.js"></script>
+    <link rel="stylesheet" href="./assets/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/index.css" />
+    <link rel="shortcut icon" type="image/png" href="./assets/favicon.png" />
+  </head>
+
+  <body>
+    <div id="side-bar">
+
+      <div id="logo-container">
+        <div class="title">
+          Apex Documentation
+        </div>
+        <img src="assets/logo.png" />
+        <div class="subtitle">
+          Powered by <a target="_blank" rel="noopener noreferrer" href="https://github.com/no-stack-dub-sack/apexdox-vs-code">ApexDox VS Code</a>
+        </div>
+      </div>
+      <div id="search-wrapper">
+        <div class="search-icon"></div>
+        <input id="search-input" type="text" autocomplete="off" placeholder="Search...">
+      </div>
+      <ul id="search-results" class=""></ul>
+      <div class="navbar">
+        <nav role="navigation">
+          <a class="nav-header" id="home" href="javascript:void(0)" onclick="goToLocation('index.html');">
+            Home
+          </a>
+          <details id="@last_modified_by_:_ChangeMeIn@UserSettingsUnder.SFDoc" class="group-name">
+            <summary id="header-@last_modified_by_:_ChangeMeIn@UserSettingsUnder.SFDoc" class="nav-header">
+              <span>@last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc</span>
+            </summary>
+            <ul>
+              <!-- menu items -->
+              <li title="AddPrimaryContactTest" id="item-AddPrimaryContactTest" class="nav-item class public" onclick="goToLocation('AddPrimaryContactTest.html');">
+                <a tabindex="1" href="javascript:void(0)">AddPrimaryContactTest</a>
+              </li>
+              <li title="EmailManager" id="item-EmailManager" class="nav-item class public" onclick="goToLocation('EmailManager.html');">
+                <a tabindex="1" href="javascript:void(0)">EmailManager</a>
+              </li>
+              <li title="VsController" id="item-VsController" class="nav-item class public" onclick="goToLocation('VsController.html');">
+                <a tabindex="1" href="javascript:void(0)">VsController</a>
+              </li>
+            </ul>
+          </details>
+          <details id="Miscellaneous" class="group-name">
+            <summary id="header-Miscellaneous" class="nav-header">
+              <span>Miscellaneous</span>
+            </summary>
+            <ul>
+              <!-- menu items -->
+              <li title="AccHandler" id="item-AccHandler" class="nav-item class public" onclick="goToLocation('AccHandler.html');">
+                <a tabindex="1" href="javascript:void(0)">AccHandler</a>
+              </li>
+              <li title="AccountHandler" id="item-AccountHandler" class="nav-item class public" onclick="goToLocation('AccountHandler.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountHandler</a>
+              </li>
+              <li title="AccountHelper1" id="item-AccountHelper1" class="nav-item class public" onclick="goToLocation('AccountHelper1.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountHelper1</a>
+              </li>
+              <li title="AccountProcessor" id="item-AccountProcessor" class="nav-item class public" onclick="goToLocation('AccountProcessor.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountProcessor</a>
+              </li>
+              <li title="AccountProcessorTest" id="item-AccountProcessorTest" class="nav-item class public" onclick="goToLocation('AccountProcessorTest.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountProcessorTest</a>
+              </li>
+              <li title="AccountTriggerHandler" id="item-AccountTriggerHandler" class="nav-item class public" onclick="goToLocation('AccountTriggerHandler.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountTriggerHandler</a>
+              </li>
+              <li title="AccountTriggerHelper" id="item-AccountTriggerHelper" class="nav-item class public" onclick="goToLocation('AccountTriggerHelper.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountTriggerHelper</a>
+              </li>
+              <li title="AddPrimaryContact" id="item-AddPrimaryContact" class="nav-item class public" onclick="goToLocation('AddPrimaryContact.html');">
+                <a tabindex="1" href="javascript:void(0)">AddPrimaryContact</a>
+              </li>
+              <li title="BatchDemo1" id="item-BatchDemo1" class="nav-item class public" onclick="goToLocation('BatchDemo1.html');">
+                <a tabindex="1" href="javascript:void(0)">BatchDemo1</a>
+              </li>
+              <li title="CallBy" id="item-CallBy" class="nav-item class public" onclick="goToLocation('CallBy.html');">
+                <a tabindex="1" href="javascript:void(0)">CallBy</a>
+              </li>
+              <li title="ContactAndLeadSearch" id="item-ContactAndLeadSearch" class="nav-item class public" onclick="goToLocation('ContactAndLeadSearch.html');">
+                <a tabindex="1" href="javascript:void(0)">ContactAndLeadSearch</a>
+              </li>
+              <li title="ContactSearch" id="item-ContactSearch" class="nav-item class public" onclick="goToLocation('ContactSearch.html');">
+                <a tabindex="1" href="javascript:void(0)">ContactSearch</a>
+              </li>
+              <li title="ContentManagerService" id="item-ContentManagerService" class="nav-item class public" onclick="goToLocation('ContentManagerService.html');">
+                <a tabindex="1" href="javascript:void(0)">ContentManagerService</a>
+              </li>
+              <li title="DailyLeadProcessor" id="item-DailyLeadProcessor" class="nav-item class global" onclick="goToLocation('DailyLeadProcessor.html');">
+                <a tabindex="1" href="javascript:void(0)">DailyLeadProcessor</a>
+              </li>
+              <li title="DailyLeadProcessorTest" id="item-DailyLeadProcessorTest" class="nav-item class private" onclick="goToLocation('DailyLeadProcessorTest.html');">
+                <a tabindex="1" href="javascript:void(0)">DailyLeadProcessorTest</a>
+              </li>
+              <li title="ExportOrderCltrl" id="item-ExportOrderCltrl" class="nav-item class public" onclick="goToLocation('ExportOrderCltrl.html');">
+                <a tabindex="1" href="javascript:void(0)">ExportOrderCltrl</a>
+              </li>
+              <li title="FileController" id="item-FileController" class="nav-item class public" onclick="goToLocation('FileController.html');">
+                <a tabindex="1" href="javascript:void(0)">FileController</a>
+              </li>
+              <li title="Fileuploadcttrl" id="item-Fileuploadcttrl" class="nav-item class public" onclick="goToLocation('Fileuploadcttrl.html');">
+                <a tabindex="1" href="javascript:void(0)">Fileuploadcttrl</a>
+              </li>
+              <li title="Account" id="item-Account" class="nav-item class global" onclick="goToLocation('Account.html');">
+                <a tabindex="1" href="javascript:void(0)">Account</a>
+              </li>
+              <li title="Attachment" id="item-Attachment" class="nav-item class global" onclick="goToLocation('Attachment.html');">
+                <a tabindex="1" href="javascript:void(0)">Attachment</a>
+              </li>
+              <li title="Case" id="item-Case" class="nav-item class global" onclick="goToLocation('Case.html');">
+                <a tabindex="1" href="javascript:void(0)">Case</a>
+              </li>
+              <li title="Contact" id="item-Contact" class="nav-item class global" onclick="goToLocation('Contact.html');">
+                <a tabindex="1" href="javascript:void(0)">Contact</a>
+              </li>
+              <li title="Contract" id="item-Contract" class="nav-item class global" onclick="goToLocation('Contract.html');">
+                <a tabindex="1" href="javascript:void(0)">Contract</a>
+              </li>
+              <li title="Lead" id="item-Lead" class="nav-item class global" onclick="goToLocation('Lead.html');">
+                <a tabindex="1" href="javascript:void(0)">Lead</a>
+              </li>
+              <li title="Note" id="item-Note" class="nav-item class global" onclick="goToLocation('Note.html');">
+                <a tabindex="1" href="javascript:void(0)">Note</a>
+              </li>
+              <li title="Opportunity" id="item-Opportunity" class="nav-item class global" onclick="goToLocation('Opportunity.html');">
+                <a tabindex="1" href="javascript:void(0)">Opportunity</a>
+              </li>
+              <li title="Order" id="item-Order" class="nav-item class global" onclick="goToLocation('Order.html');">
+                <a tabindex="1" href="javascript:void(0)">Order</a>
+              </li>
+              <li title="Pricebook2" id="item-Pricebook2" class="nav-item class global" onclick="goToLocation('Pricebook2.html');">
+                <a tabindex="1" href="javascript:void(0)">Pricebook2</a>
+              </li>
+              <li title="PricebookEntry" id="item-PricebookEntry" class="nav-item class global" onclick="goToLocation('PricebookEntry.html');">
+                <a tabindex="1" href="javascript:void(0)">PricebookEntry</a>
+              </li>
+              <li title="Product2" id="item-Product2" class="nav-item class global" onclick="goToLocation('Product2.html');">
+                <a tabindex="1" href="javascript:void(0)">Product2</a>
+              </li>
+              <li title="RecordType" id="item-RecordType" class="nav-item class global" onclick="goToLocation('RecordType.html');">
+                <a tabindex="1" href="javascript:void(0)">RecordType</a>
+              </li>
+              <li title="Report" id="item-Report" class="nav-item class global" onclick="goToLocation('Report.html');">
+                <a tabindex="1" href="javascript:void(0)">Report</a>
+              </li>
+              <li title="Task" id="item-Task" class="nav-item class global" onclick="goToLocation('Task.html');">
+                <a tabindex="1" href="javascript:void(0)">Task</a>
+              </li>
+              <li title="User" id="item-User" class="nav-item class global" onclick="goToLocation('User.html');">
+                <a tabindex="1" href="javascript:void(0)">User</a>
+              </li>
+              <li title="FutureDemo" id="item-FutureDemo" class="nav-item class public" onclick="goToLocation('FutureDemo.html');">
+                <a tabindex="1" href="javascript:void(0)">FutureDemo</a>
+              </li>
+              <li title="Handelar" id="item-Handelar" class="nav-item class public" onclick="goToLocation('Handelar.html');">
+                <a tabindex="1" href="javascript:void(0)">Handelar</a>
+              </li>
+              <li title="Handler" id="item-Handler" class="nav-item class public" onclick="goToLocation('Handler.html');">
+                <a tabindex="1" href="javascript:void(0)">Handler</a>
+              </li>
+              <li title="LeadProcessor" id="item-LeadProcessor" class="nav-item class global" onclick="goToLocation('LeadProcessor.html');">
+                <a tabindex="1" href="javascript:void(0)">LeadProcessor</a>
+              </li>
+              <li title="LeadProcessorTest" id="item-LeadProcessorTest" class="nav-item class public" onclick="goToLocation('LeadProcessorTest.html');">
+                <a tabindex="1" href="javascript:void(0)">LeadProcessorTest</a>
+              </li>
+              <li title="PrintJobPDFController" id="item-PrintJobPDFController" class="nav-item class public" onclick="goToLocation('PrintJobPDFController.html');">
+                <a tabindex="1" href="javascript:void(0)">PrintJobPDFController</a>
+              </li>
+              <li title="QueueableDemo" id="item-QueueableDemo" class="nav-item class public" onclick="goToLocation('QueueableDemo.html');">
+                <a tabindex="1" href="javascript:void(0)">QueueableDemo</a>
+              </li>
+              <li title="RandomContactFactory" id="item-RandomContactFactory" class="nav-item class public" onclick="goToLocation('RandomContactFactory.html');">
+                <a tabindex="1" href="javascript:void(0)">RandomContactFactory</a>
+              </li>
+              <li title="RemindOpptyOwners" id="item-RemindOpptyOwners" class="nav-item class public" onclick="goToLocation('RemindOpptyOwners.html');">
+                <a tabindex="1" href="javascript:void(0)">RemindOpptyOwners</a>
+              </li>
+              <li title="SampleRestAPIRestController" id="item-SampleRestAPIRestController" class="nav-item class global" onclick="goToLocation('SampleRestAPIRestController.html');">
+                <a tabindex="1" href="javascript:void(0)">SampleRestAPIRestController</a>
+              </li>
+              <li title="StateFulDemo" id="item-StateFulDemo" class="nav-item class global" onclick="goToLocation('StateFulDemo.html');">
+                <a tabindex="1" href="javascript:void(0)">StateFulDemo</a>
+              </li>
+              <li title="StringArrayTest" id="item-StringArrayTest" class="nav-item class public" onclick="goToLocation('StringArrayTest.html');">
+                <a tabindex="1" href="javascript:void(0)">StringArrayTest</a>
+              </li>
+              <li title="TaskUtil" id="item-TaskUtil" class="nav-item class public" onclick="goToLocation('TaskUtil.html');">
+                <a tabindex="1" href="javascript:void(0)">TaskUtil</a>
+              </li>
+              <li title="TaskUtilTest" id="item-TaskUtilTest" class="nav-item class private" onclick="goToLocation('TaskUtilTest.html');">
+                <a tabindex="1" href="javascript:void(0)">TaskUtilTest</a>
+              </li>
+              <li title="TemperatureConverter" id="item-TemperatureConverter" class="nav-item class public" onclick="goToLocation('TemperatureConverter.html');">
+                <a tabindex="1" href="javascript:void(0)">TemperatureConverter</a>
+              </li>
+              <li title="TemperatureConverterTest" id="item-TemperatureConverterTest" class="nav-item class private" onclick="goToLocation('TemperatureConverterTest.html');">
+                <a tabindex="1" href="javascript:void(0)">TemperatureConverterTest</a>
+              </li>
+              <li title="TestAbstractClass" id="item-TestAbstractClass" class="nav-item class public" onclick="goToLocation('TestAbstractClass.html');">
+                <a tabindex="1" href="javascript:void(0)">TestAbstractClass</a>
+              </li>
+              <li title="TestAccountDeletion" id="item-TestAccountDeletion" class="nav-item class private" onclick="goToLocation('TestAccountDeletion.html');">
+                <a tabindex="1" href="javascript:void(0)">TestAccountDeletion</a>
+              </li>
+              <li title="TestDataFactory" id="item-TestDataFactory" class="nav-item class public" onclick="goToLocation('TestDataFactory.html');">
+                <a tabindex="1" href="javascript:void(0)">TestDataFactory</a>
+              </li>
+              <li title="TestRestrictContactByName" id="item-TestRestrictContactByName" class="nav-item class private" onclick="goToLocation('TestRestrictContactByName.html');">
+                <a tabindex="1" href="javascript:void(0)">TestRestrictContactByName</a>
+              </li>
+              <li title="TestVerifyDate" id="item-TestVerifyDate" class="nav-item class public" onclick="goToLocation('TestVerifyDate.html');">
+                <a tabindex="1" href="javascript:void(0)">TestVerifyDate</a>
+              </li>
+              <li title="TriggerHandler" id="item-TriggerHandler" class="nav-item class public" onclick="goToLocation('TriggerHandler.html');">
+                <a tabindex="1" href="javascript:void(0)">TriggerHandler</a>
+              </li>
+              <li title="UpdateContactAddresses" id="item-UpdateContactAddresses" class="nav-item class public" onclick="goToLocation('UpdateContactAddresses.html');">
+                <a tabindex="1" href="javascript:void(0)">UpdateContactAddresses</a>
+              </li>
+              <li title="UpdateContactAddressesTest" id="item-UpdateContactAddressesTest" class="nav-item class public" onclick="goToLocation('UpdateContactAddressesTest.html');">
+                <a tabindex="1" href="javascript:void(0)">UpdateContactAddressesTest</a>
+              </li>
+              <li title="UpdateParentAccount" id="item-UpdateParentAccount" class="nav-item class public" onclick="goToLocation('UpdateParentAccount.html');">
+                <a tabindex="1" href="javascript:void(0)">UpdateParentAccount</a>
+              </li>
+              <li title="VerifyDate" id="item-VerifyDate" class="nav-item class public" onclick="goToLocation('VerifyDate.html');">
+                <a tabindex="1" href="javascript:void(0)">VerifyDate</a>
+              </li>
+            </ul>
+          </details>
+          <details id="SKI" class="group-name">
+            <summary id="header-SKI" class="nav-header">
+              <span>SKI</span>
+            </summary>
+            <ul>
+              <!-- menu items -->
+              <li title="SearchDemandGenerationCls" id="item-SearchDemandGenerationCls" class="nav-item class public" onclick="goToLocation('SearchDemandGenerationCls.html');">
+                <a tabindex="1" href="javascript:void(0)">SearchDemandGenerationCls</a>
+              </li>
+              <li title="ServiceHelper" id="item-ServiceHelper" class="nav-item class public" onclick="goToLocation('ServiceHelper.html');">
+                <a tabindex="1" href="javascript:void(0)">ServiceHelper</a>
+              </li>
+            </ul>
+          </details>
+        </nav>
+      </div>
+    </div>
+    <table id="content">
+      <tr>
+        <td class="scoping-panel">
+          Show: <input type="checkbox" checked="true" id="cbx-all" onclick="toggleAllScopes(this.checked);" />
+          <label for="cbx-all">All</label>&nbsp;&nbsp;
+          <input type="checkbox" checked="true" id="cbx-global" onclick="toggleScope('global', this.checked);" />
+          <label for="cbx-global">
+            global
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-public" onclick="toggleScope('public', this.checked);" />
+          <label for="cbx-public">
+            public
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-protected" onclick="toggleScope('protected', this.checked);" />
+          <label for="cbx-protected">
+            protected
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-private" onclick="toggleScope('private', this.checked);" />
+          <label for="cbx-private">
+            private
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-testmethod" onclick="toggleScope('testmethod', this.checked);" />
+          <label for="cbx-testmethod">
+            testMethod
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-webservice" onclick="toggleScope('webservice', this.checked);" />
+          <label for="cbx-webservice">
+            webService
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="doc-page">
+
+          <div class="section">
+
+            <h2 class="class-title top-level-type" id="TaskUtil">
+              <span>TaskUtil</span>
+            </h2>
+            <div class="class-container">
+
+              <div class="class-subtitle">
+                Signature
+              </div>
+
+              <div class="class-signature">
+                public class TaskUtil
+              </div>
+            </div>
+            <div class="subsection methods">
+              <h3 class="subsection-title methods">TaskUtil Methods</h3>
+              <div class="methods-container">
+                <ul class="methods-toc">
+                  <li class="method public">
+                    <a class="methods-toc__entry " href="#TaskUtil.getTaskPriority">
+                      getTaskPriority (leadState)
+                    </a>
+
+                  </li>
+                </ul>
+                <div class="method public">
+                  <h4 class="method-title " id="TaskUtil.getTaskPriority">
+                    <span>getTaskPriority(leadState)</span>
+                  </h4>
+                  <div class="method-subtitle">
+                    Signature
+                  </div>
+
+                  <div class="method-signature">
+                    public static String getTaskPriority(String leadState)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="footer">
+
+          <div>
+            <a href="https://github.com/no-stack-dub-sack/apexdox-vs-code" target="_blank" rel="noopener noreferrer">
+              Powered By ApexDox VS Code
+            </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>

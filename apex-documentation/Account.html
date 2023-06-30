@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Apex Documentation</title>
+    <meta charset="UTF-8">
+    <script type="module" src="./assets/index.js"></script>
+    <script type="module" src="./assets/search-idx.js"></script>
+    <script type="module" src="./assets/search.js"></script>
+    <script charset="UTF-8" src="./assets/highlight.js"></script>
+    <script charset="UTF-8" src="./assets/mark.js"></script>
+    <script charset="UTF-8" src="./assets/lunr.js"></script>
+    <link rel="stylesheet" href="./assets/highlight.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/index.css" />
+    <link rel="shortcut icon" type="image/png" href="./assets/favicon.png" />
+  </head>
+
+  <body>
+    <div id="side-bar">
+
+      <div id="logo-container">
+        <div class="title">
+          Apex Documentation
+        </div>
+        <img src="assets/logo.png" />
+        <div class="subtitle">
+          Powered by <a target="_blank" rel="noopener noreferrer" href="https://github.com/no-stack-dub-sack/apexdox-vs-code">ApexDox VS Code</a>
+        </div>
+      </div>
+      <div id="search-wrapper">
+        <div class="search-icon"></div>
+        <input id="search-input" type="text" autocomplete="off" placeholder="Search...">
+      </div>
+      <ul id="search-results" class=""></ul>
+      <div class="navbar">
+        <nav role="navigation">
+          <a class="nav-header" id="home" href="javascript:void(0)" onclick="goToLocation('index.html');">
+            Home
+          </a>
+          <details id="@last_modified_by_:_ChangeMeIn@UserSettingsUnder.SFDoc" class="group-name">
+            <summary id="header-@last_modified_by_:_ChangeMeIn@UserSettingsUnder.SFDoc" class="nav-header">
+              <span>@last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc</span>
+            </summary>
+            <ul>
+              <!-- menu items -->
+              <li title="AddPrimaryContactTest" id="item-AddPrimaryContactTest" class="nav-item class public" onclick="goToLocation('AddPrimaryContactTest.html');">
+                <a tabindex="1" href="javascript:void(0)">AddPrimaryContactTest</a>
+              </li>
+              <li title="EmailManager" id="item-EmailManager" class="nav-item class public" onclick="goToLocation('EmailManager.html');">
+                <a tabindex="1" href="javascript:void(0)">EmailManager</a>
+              </li>
+              <li title="VsController" id="item-VsController" class="nav-item class public" onclick="goToLocation('VsController.html');">
+                <a tabindex="1" href="javascript:void(0)">VsController</a>
+              </li>
+            </ul>
+          </details>
+          <details id="Miscellaneous" class="group-name">
+            <summary id="header-Miscellaneous" class="nav-header">
+              <span>Miscellaneous</span>
+            </summary>
+            <ul>
+              <!-- menu items -->
+              <li title="AccHandler" id="item-AccHandler" class="nav-item class public" onclick="goToLocation('AccHandler.html');">
+                <a tabindex="1" href="javascript:void(0)">AccHandler</a>
+              </li>
+              <li title="AccountHandler" id="item-AccountHandler" class="nav-item class public" onclick="goToLocation('AccountHandler.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountHandler</a>
+              </li>
+              <li title="AccountHelper1" id="item-AccountHelper1" class="nav-item class public" onclick="goToLocation('AccountHelper1.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountHelper1</a>
+              </li>
+              <li title="AccountProcessor" id="item-AccountProcessor" class="nav-item class public" onclick="goToLocation('AccountProcessor.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountProcessor</a>
+              </li>
+              <li title="AccountProcessorTest" id="item-AccountProcessorTest" class="nav-item class public" onclick="goToLocation('AccountProcessorTest.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountProcessorTest</a>
+              </li>
+              <li title="AccountTriggerHandler" id="item-AccountTriggerHandler" class="nav-item class public" onclick="goToLocation('AccountTriggerHandler.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountTriggerHandler</a>
+              </li>
+              <li title="AccountTriggerHelper" id="item-AccountTriggerHelper" class="nav-item class public" onclick="goToLocation('AccountTriggerHelper.html');">
+                <a tabindex="1" href="javascript:void(0)">AccountTriggerHelper</a>
+              </li>
+              <li title="AddPrimaryContact" id="item-AddPrimaryContact" class="nav-item class public" onclick="goToLocation('AddPrimaryContact.html');">
+                <a tabindex="1" href="javascript:void(0)">AddPrimaryContact</a>
+              </li>
+              <li title="BatchDemo1" id="item-BatchDemo1" class="nav-item class public" onclick="goToLocation('BatchDemo1.html');">
+                <a tabindex="1" href="javascript:void(0)">BatchDemo1</a>
+              </li>
+              <li title="CallBy" id="item-CallBy" class="nav-item class public" onclick="goToLocation('CallBy.html');">
+                <a tabindex="1" href="javascript:void(0)">CallBy</a>
+              </li>
+              <li title="ContactAndLeadSearch" id="item-ContactAndLeadSearch" class="nav-item class public" onclick="goToLocation('ContactAndLeadSearch.html');">
+                <a tabindex="1" href="javascript:void(0)">ContactAndLeadSearch</a>
+              </li>
+              <li title="ContactSearch" id="item-ContactSearch" class="nav-item class public" onclick="goToLocation('ContactSearch.html');">
+                <a tabindex="1" href="javascript:void(0)">ContactSearch</a>
+              </li>
+              <li title="ContentManagerService" id="item-ContentManagerService" class="nav-item class public" onclick="goToLocation('ContentManagerService.html');">
+                <a tabindex="1" href="javascript:void(0)">ContentManagerService</a>
+              </li>
+              <li title="DailyLeadProcessor" id="item-DailyLeadProcessor" class="nav-item class global" onclick="goToLocation('DailyLeadProcessor.html');">
+                <a tabindex="1" href="javascript:void(0)">DailyLeadProcessor</a>
+              </li>
+              <li title="DailyLeadProcessorTest" id="item-DailyLeadProcessorTest" class="nav-item class private" onclick="goToLocation('DailyLeadProcessorTest.html');">
+                <a tabindex="1" href="javascript:void(0)">DailyLeadProcessorTest</a>
+              </li>
+              <li title="ExportOrderCltrl" id="item-ExportOrderCltrl" class="nav-item class public" onclick="goToLocation('ExportOrderCltrl.html');">
+                <a tabindex="1" href="javascript:void(0)">ExportOrderCltrl</a>
+              </li>
+              <li title="FileController" id="item-FileController" class="nav-item class public" onclick="goToLocation('FileController.html');">
+                <a tabindex="1" href="javascript:void(0)">FileController</a>
+              </li>
+              <li title="Fileuploadcttrl" id="item-Fileuploadcttrl" class="nav-item class public" onclick="goToLocation('Fileuploadcttrl.html');">
+                <a tabindex="1" href="javascript:void(0)">Fileuploadcttrl</a>
+              </li>
+              <li title="Account" id="item-Account" class="nav-item class global" onclick="goToLocation('Account.html');">
+                <a tabindex="1" href="javascript:void(0)">Account</a>
+              </li>
+              <li title="Attachment" id="item-Attachment" class="nav-item class global" onclick="goToLocation('Attachment.html');">
+                <a tabindex="1" href="javascript:void(0)">Attachment</a>
+              </li>
+              <li title="Case" id="item-Case" class="nav-item class global" onclick="goToLocation('Case.html');">
+                <a tabindex="1" href="javascript:void(0)">Case</a>
+              </li>
+              <li title="Contact" id="item-Contact" class="nav-item class global" onclick="goToLocation('Contact.html');">
+                <a tabindex="1" href="javascript:void(0)">Contact</a>
+              </li>
+              <li title="Contract" id="item-Contract" class="nav-item class global" onclick="goToLocation('Contract.html');">
+                <a tabindex="1" href="javascript:void(0)">Contract</a>
+              </li>
+              <li title="Lead" id="item-Lead" class="nav-item class global" onclick="goToLocation('Lead.html');">
+                <a tabindex="1" href="javascript:void(0)">Lead</a>
+              </li>
+              <li title="Note" id="item-Note" class="nav-item class global" onclick="goToLocation('Note.html');">
+                <a tabindex="1" href="javascript:void(0)">Note</a>
+              </li>
+              <li title="Opportunity" id="item-Opportunity" class="nav-item class global" onclick="goToLocation('Opportunity.html');">
+                <a tabindex="1" href="javascript:void(0)">Opportunity</a>
+              </li>
+              <li title="Order" id="item-Order" class="nav-item class global" onclick="goToLocation('Order.html');">
+                <a tabindex="1" href="javascript:void(0)">Order</a>
+              </li>
+              <li title="Pricebook2" id="item-Pricebook2" class="nav-item class global" onclick="goToLocation('Pricebook2.html');">
+                <a tabindex="1" href="javascript:void(0)">Pricebook2</a>
+              </li>
+              <li title="PricebookEntry" id="item-PricebookEntry" class="nav-item class global" onclick="goToLocation('PricebookEntry.html');">
+                <a tabindex="1" href="javascript:void(0)">PricebookEntry</a>
+              </li>
+              <li title="Product2" id="item-Product2" class="nav-item class global" onclick="goToLocation('Product2.html');">
+                <a tabindex="1" href="javascript:void(0)">Product2</a>
+              </li>
+              <li title="RecordType" id="item-RecordType" class="nav-item class global" onclick="goToLocation('RecordType.html');">
+                <a tabindex="1" href="javascript:void(0)">RecordType</a>
+              </li>
+              <li title="Report" id="item-Report" class="nav-item class global" onclick="goToLocation('Report.html');">
+                <a tabindex="1" href="javascript:void(0)">Report</a>
+              </li>
+              <li title="Task" id="item-Task" class="nav-item class global" onclick="goToLocation('Task.html');">
+                <a tabindex="1" href="javascript:void(0)">Task</a>
+              </li>
+              <li title="User" id="item-User" class="nav-item class global" onclick="goToLocation('User.html');">
+                <a tabindex="1" href="javascript:void(0)">User</a>
+              </li>
+              <li title="FutureDemo" id="item-FutureDemo" class="nav-item class public" onclick="goToLocation('FutureDemo.html');">
+                <a tabindex="1" href="javascript:void(0)">FutureDemo</a>
+              </li>
+              <li title="Handelar" id="item-Handelar" class="nav-item class public" onclick="goToLocation('Handelar.html');">
+                <a tabindex="1" href="javascript:void(0)">Handelar</a>
+              </li>
+              <li title="Handler" id="item-Handler" class="nav-item class public" onclick="goToLocation('Handler.html');">
+                <a tabindex="1" href="javascript:void(0)">Handler</a>
+              </li>
+              <li title="LeadProcessor" id="item-LeadProcessor" class="nav-item class global" onclick="goToLocation('LeadProcessor.html');">
+                <a tabindex="1" href="javascript:void(0)">LeadProcessor</a>
+              </li>
+              <li title="LeadProcessorTest" id="item-LeadProcessorTest" class="nav-item class public" onclick="goToLocation('LeadProcessorTest.html');">
+                <a tabindex="1" href="javascript:void(0)">LeadProcessorTest</a>
+              </li>
+              <li title="PrintJobPDFController" id="item-PrintJobPDFController" class="nav-item class public" onclick="goToLocation('PrintJobPDFController.html');">
+                <a tabindex="1" href="javascript:void(0)">PrintJobPDFController</a>
+              </li>
+              <li title="QueueableDemo" id="item-QueueableDemo" class="nav-item class public" onclick="goToLocation('QueueableDemo.html');">
+                <a tabindex="1" href="javascript:void(0)">QueueableDemo</a>
+              </li>
+              <li title="RandomContactFactory" id="item-RandomContactFactory" class="nav-item class public" onclick="goToLocation('RandomContactFactory.html');">
+                <a tabindex="1" href="javascript:void(0)">RandomContactFactory</a>
+              </li>
+              <li title="RemindOpptyOwners" id="item-RemindOpptyOwners" class="nav-item class public" onclick="goToLocation('RemindOpptyOwners.html');">
+                <a tabindex="1" href="javascript:void(0)">RemindOpptyOwners</a>
+              </li>
+              <li title="SampleRestAPIRestController" id="item-SampleRestAPIRestController" class="nav-item class global" onclick="goToLocation('SampleRestAPIRestController.html');">
+                <a tabindex="1" href="javascript:void(0)">SampleRestAPIRestController</a>
+              </li>
+              <li title="StateFulDemo" id="item-StateFulDemo" class="nav-item class global" onclick="goToLocation('StateFulDemo.html');">
+                <a tabindex="1" href="javascript:void(0)">StateFulDemo</a>
+              </li>
+              <li title="StringArrayTest" id="item-StringArrayTest" class="nav-item class public" onclick="goToLocation('StringArrayTest.html');">
+                <a tabindex="1" href="javascript:void(0)">StringArrayTest</a>
+              </li>
+              <li title="TaskUtil" id="item-TaskUtil" class="nav-item class public" onclick="goToLocation('TaskUtil.html');">
+                <a tabindex="1" href="javascript:void(0)">TaskUtil</a>
+              </li>
+              <li title="TaskUtilTest" id="item-TaskUtilTest" class="nav-item class private" onclick="goToLocation('TaskUtilTest.html');">
+                <a tabindex="1" href="javascript:void(0)">TaskUtilTest</a>
+              </li>
+              <li title="TemperatureConverter" id="item-TemperatureConverter" class="nav-item class public" onclick="goToLocation('TemperatureConverter.html');">
+                <a tabindex="1" href="javascript:void(0)">TemperatureConverter</a>
+              </li>
+              <li title="TemperatureConverterTest" id="item-TemperatureConverterTest" class="nav-item class private" onclick="goToLocation('TemperatureConverterTest.html');">
+                <a tabindex="1" href="javascript:void(0)">TemperatureConverterTest</a>
+              </li>
+              <li title="TestAbstractClass" id="item-TestAbstractClass" class="nav-item class public" onclick="goToLocation('TestAbstractClass.html');">
+                <a tabindex="1" href="javascript:void(0)">TestAbstractClass</a>
+              </li>
+              <li title="TestAccountDeletion" id="item-TestAccountDeletion" class="nav-item class private" onclick="goToLocation('TestAccountDeletion.html');">
+                <a tabindex="1" href="javascript:void(0)">TestAccountDeletion</a>
+              </li>
+              <li title="TestDataFactory" id="item-TestDataFactory" class="nav-item class public" onclick="goToLocation('TestDataFactory.html');">
+                <a tabindex="1" href="javascript:void(0)">TestDataFactory</a>
+              </li>
+              <li title="TestRestrictContactByName" id="item-TestRestrictContactByName" class="nav-item class private" onclick="goToLocation('TestRestrictContactByName.html');">
+                <a tabindex="1" href="javascript:void(0)">TestRestrictContactByName</a>
+              </li>
+              <li title="TestVerifyDate" id="item-TestVerifyDate" class="nav-item class public" onclick="goToLocation('TestVerifyDate.html');">
+                <a tabindex="1" href="javascript:void(0)">TestVerifyDate</a>
+              </li>
+              <li title="TriggerHandler" id="item-TriggerHandler" class="nav-item class public" onclick="goToLocation('TriggerHandler.html');">
+                <a tabindex="1" href="javascript:void(0)">TriggerHandler</a>
+              </li>
+              <li title="UpdateContactAddresses" id="item-UpdateContactAddresses" class="nav-item class public" onclick="goToLocation('UpdateContactAddresses.html');">
+                <a tabindex="1" href="javascript:void(0)">UpdateContactAddresses</a>
+              </li>
+              <li title="UpdateContactAddressesTest" id="item-UpdateContactAddressesTest" class="nav-item class public" onclick="goToLocation('UpdateContactAddressesTest.html');">
+                <a tabindex="1" href="javascript:void(0)">UpdateContactAddressesTest</a>
+              </li>
+              <li title="UpdateParentAccount" id="item-UpdateParentAccount" class="nav-item class public" onclick="goToLocation('UpdateParentAccount.html');">
+                <a tabindex="1" href="javascript:void(0)">UpdateParentAccount</a>
+              </li>
+              <li title="VerifyDate" id="item-VerifyDate" class="nav-item class public" onclick="goToLocation('VerifyDate.html');">
+                <a tabindex="1" href="javascript:void(0)">VerifyDate</a>
+              </li>
+            </ul>
+          </details>
+          <details id="SKI" class="group-name">
+            <summary id="header-SKI" class="nav-header">
+              <span>SKI</span>
+            </summary>
+            <ul>
+              <!-- menu items -->
+              <li title="SearchDemandGenerationCls" id="item-SearchDemandGenerationCls" class="nav-item class public" onclick="goToLocation('SearchDemandGenerationCls.html');">
+                <a tabindex="1" href="javascript:void(0)">SearchDemandGenerationCls</a>
+              </li>
+              <li title="ServiceHelper" id="item-ServiceHelper" class="nav-item class public" onclick="goToLocation('ServiceHelper.html');">
+                <a tabindex="1" href="javascript:void(0)">ServiceHelper</a>
+              </li>
+            </ul>
+          </details>
+        </nav>
+      </div>
+    </div>
+    <table id="content">
+      <tr>
+        <td class="scoping-panel">
+          Show: <input type="checkbox" checked="true" id="cbx-all" onclick="toggleAllScopes(this.checked);" />
+          <label for="cbx-all">All</label>&nbsp;&nbsp;
+          <input type="checkbox" checked="true" id="cbx-global" onclick="toggleScope('global', this.checked);" />
+          <label for="cbx-global">
+            global
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-public" onclick="toggleScope('public', this.checked);" />
+          <label for="cbx-public">
+            public
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-protected" onclick="toggleScope('protected', this.checked);" />
+          <label for="cbx-protected">
+            protected
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-private" onclick="toggleScope('private', this.checked);" />
+          <label for="cbx-private">
+            private
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-testmethod" onclick="toggleScope('testmethod', this.checked);" />
+          <label for="cbx-testmethod">
+            testMethod
+          </label>&nbsp;&nbsp;<input type="checkbox" checked="true" id="cbx-webservice" onclick="toggleScope('webservice', this.checked);" />
+          <label for="cbx-webservice">
+            webService
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td class="doc-page">
+
+          <div class="section">
+
+            <h2 class="class-title top-level-type" id="Account">
+              <span>Account</span>
+            </h2>
+            <div class="class-container">
+
+              <div class="class-subtitle">
+                Signature
+              </div>
+
+              <div class="class-signature">
+                global class Account
+              </div>
+            </div>
+            <div class="subsection properties Account">
+              <h3 class="subsection-title properties">Account Properties</h3>
+              <table class="attributes-table properties">
+
+                <tr>
+                  <th>Name</th>
+                  <th>Signature</th>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Account</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountContactRoleChangeEvent&gt; Account
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Account</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;CaseChangeEvent&gt; Account
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Account</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ContractChangeEvent&gt; Account
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Account</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;OpportunityChangeEvent&gt; Account
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Account</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Task&gt; Account
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Account</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;UserChangeEvent&gt; Account
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AccountCleanInfos</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountCleanInfo&gt; AccountCleanInfos
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AccountContactRoles</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountContactRole&gt; AccountContactRoles
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AccountNumber</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String AccountNumber
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AccountPartnersFrom</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountPartner&gt; AccountPartnersFrom
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AccountPartnersTo</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountPartner&gt; AccountPartnersTo
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AccountSource</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String AccountSource
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ActivityHistories</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ActivityHistory&gt; ActivityHistories
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AnnualRevenue</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Decimal AnnualRevenue
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AssetProvidedBy</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AssetChangeEvent&gt; AssetProvidedBy
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Assets</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Asset&gt; Assets
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AssetServicedBy</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AssetChangeEvent&gt; AssetServicedBy
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>AttachedContentDocuments</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AttachedContentDocument&gt; AttachedContentDocuments
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Attachments</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Attachment&gt; Attachments
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingAddress</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Address BillingAddress
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingCity</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String BillingCity
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingCountry</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String BillingCountry
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingGeocodeAccuracy</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String BillingGeocodeAccuracy
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingLatitude</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Double BillingLatitude
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingLongitude</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Double BillingLongitude
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingPostalCode</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String BillingPostalCode
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingState</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String BillingState
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>BillingStreet</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String BillingStreet
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Cases</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Case&gt; Cases
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ChildAccounts</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Account&gt; ChildAccounts
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>CleanStatus</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String CleanStatus
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>CombinedAttachments</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;CombinedAttachment&gt; CombinedAttachments
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ContactPointEmails</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ContactPointEmail&gt; ContactPointEmails
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ContactPointPhones</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ContactPointPhone&gt; ContactPointPhones
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ContactRequests</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ContactRequest&gt; ContactRequests
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Contacts</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Contact&gt; Contacts
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ContentDocumentLinks</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ContentDocumentLink&gt; ContentDocumentLinks
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Contracts</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Contract&gt; Contracts
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ConvertedAccount</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Lead&gt; ConvertedAccount
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>CreatedBy</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global User CreatedBy
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>CreatedById</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Id CreatedById
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>CreatedDate</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Datetime CreatedDate
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>DandbCompany</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global DandBCompany DandbCompany
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>DandbCompanyId</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Id DandbCompanyId
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Description</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Description
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>DunsNumber</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String DunsNumber
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>DuplicateRecordItems</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;DuplicateRecordItem&gt; DuplicateRecordItems
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Emails</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;EmailMessage&gt; Emails
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Events</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Event&gt; Events
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Fax</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Fax
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Feeds</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountFeed&gt; Feeds
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>FeedSubscriptionsForEntity</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;EntitySubscription&gt; FeedSubscriptionsForEntity
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>FirstPublishLocation</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ContentVersion&gt; FirstPublishLocation
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Histories</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountHistory&gt; Histories
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Id</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Id Id
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Industry</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Industry
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>IsDeleted</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Boolean IsDeleted
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Jigsaw</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Jigsaw
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>JigsawCompanyId</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String JigsawCompanyId
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>LastActivityDate</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Date LastActivityDate
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>LastModifiedBy</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global User LastModifiedBy
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>LastModifiedById</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Id LastModifiedById
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>LastModifiedDate</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Datetime LastModifiedDate
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>LastReferencedDate</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Datetime LastReferencedDate
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>LastViewedDate</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Datetime LastViewedDate
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>LeadOrContact</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;CampaignMember&gt; LeadOrContact
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>MasterRecord</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Account MasterRecord
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>MasterRecordId</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Id MasterRecordId
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>NaicsCode</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String NaicsCode
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>NaicsDesc</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String NaicsDesc
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Name</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Name
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Notes</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Note&gt; Notes
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>NotesAndAttachments</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;NoteAndAttachment&gt; NotesAndAttachments
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>NumberOfEmployees</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Integer NumberOfEmployees
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>OpenActivities</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;OpenActivity&gt; OpenActivities
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Opportunities</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Opportunity&gt; Opportunities
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>OpportunityPartnersTo</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;OpportunityPartner&gt; OpportunityPartnersTo
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Orders</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Order&gt; Orders
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Owner</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global User Owner
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>OwnerId</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Id OwnerId
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Ownership</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Ownership
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Parent</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Account Parent
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Parent</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountChangeEvent&gt; Parent
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Parent</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;FeedComment&gt; Parent
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ParentId</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Id ParentId
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>PartnersFrom</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Partner&gt; PartnersFrom
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>PartnersTo</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Partner&gt; PartnersTo
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Phone</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Phone
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>PhotoUrl</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String PhotoUrl
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>PortalAccount</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;UserRole&gt; PortalAccount
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ProcessInstances</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ProcessInstance&gt; ProcessInstances
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ProcessSteps</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ProcessInstanceHistory&gt; ProcessSteps
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ProvidedAssets</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Asset&gt; ProvidedAssets
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Rating</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Rating
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>RecordActionHistories</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;RecordActionHistory&gt; RecordActionHistories
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>RecordActions</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;RecordAction&gt; RecordActions
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>RecordAssociatedGroups</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;CollaborationGroupRecord&gt; RecordAssociatedGroups
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>RelatedRecord</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;ContentDistribution&gt; RelatedRecord
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>RelatedRecord</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;FlowRecordRelation&gt; RelatedRecord
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>RelatedTo</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;OutgoingEmail&gt; RelatedTo
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Relation</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;EventRelationChangeEvent&gt; Relation
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ServicedAssets</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Asset&gt; ServicedAssets
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Shares</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;AccountShare&gt; Shares
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingAddress</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Address ShippingAddress
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingCity</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String ShippingCity
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingCountry</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String ShippingCountry
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingGeocodeAccuracy</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String ShippingGeocodeAccuracy
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingLatitude</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Double ShippingLatitude
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingLongitude</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Double ShippingLongitude
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingPostalCode</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String ShippingPostalCode
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingState</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String ShippingState
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>ShippingStreet</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String ShippingStreet
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Sic</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Sic
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>SicDesc</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String SicDesc
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Site</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Site
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>SystemModstamp</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global Datetime SystemModstamp
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Tasks</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;Task&gt; Tasks
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>TickerSymbol</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String TickerSymbol
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>TopicAssignments</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;TopicAssignment&gt; TopicAssignments
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Tradestyle</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Tradestyle
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Type</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Type
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Users</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;User&gt; Users
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>Website</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String Website
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>What</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;EventChangeEvent&gt; What
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>What</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global List&lt;TaskChangeEvent&gt; What
+                    </div>
+                  </td>
+
+
+                </tr>
+                <tr class="property global">
+                  <td class="attribute-name"><span>YearStarted</span></td>
+                  <td>
+                    <div class="attribute-signature">
+                      global String YearStarted
+                    </div>
+                  </td>
+
+
+                </tr>
+              </table>
+            </div>
+            <div class="subsection methods">
+              <h3 class="subsection-title methods">Account Constructors</h3>
+              <div class="methods-container">
+                <ul class="methods-toc">
+                  <li class="method global">
+                    <a class="methods-toc__entry " href="#Account.Account">
+                      Account ()
+                    </a>
+
+                  </li>
+                </ul>
+                <div class="method global">
+                  <h4 class="method-title " id="Account.Account">
+                    <span>Account()</span>
+                  </h4>
+                  <div class="method-subtitle">
+                    Signature
+                  </div>
+
+                  <div class="method-signature">
+                    global Account ()
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="footer">
+
+          <div>
+            <a href="https://github.com/no-stack-dub-sack/apexdox-vs-code" target="_blank" rel="noopener noreferrer">
+              Powered By ApexDox VS Code
+            </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+
+</html>
