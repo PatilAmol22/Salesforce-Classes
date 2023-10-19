@@ -1,20 +1,15 @@
-/*
-API : 50
-Source : lwcFactory.com
-*/
 import { LightningElement,api,wire} from 'lwc';
 // import apex method from salesforce module 
-import fetchLookupData from '@salesforce/apex/customeLookUpLWC.fetchLookupData';
-import fetchDefaultRecord from '@salesforce/apex/customeLookUpLWC.fetchDefaultRecord';
+import fetchLookupData from '@salesforce/apex/CustomLookupLwcController.fetchLookupData';
+import fetchDefaultRecord from '@salesforce/apex/CustomLookupLwcController.fetchDefaultRecord';
 
 const DELAY = 300; // dealy apex callout timing in miliseconds  
 
 export default class CustomLookupLwc extends LightningElement {
     // public properties with initial default values 
-    @api label = 'custom lookup label';
     @api placeholder = 'search...'; 
-    @api iconName = 'standard:contact';
-    @api sObjectApiName = 'Contact';
+    @api iconName = 'standard:account';
+    @api sObjectApiName = '';
     @api defaultRecordId = '';
 
     // private properties 
@@ -27,7 +22,7 @@ export default class CustomLookupLwc extends LightningElement {
 
    // initial function to populate default selected lookup record if defaultRecordId provided  
     connectedCallback(){
-         if(this.defaultRecordId != ''){
+         if(this.defaultRecordId !==''){
             fetchDefaultRecord({ recordId: this.defaultRecordId , 'sObjectApiName' : this.sObjectApiName })
             .then((result) => {
                 if(result != null){

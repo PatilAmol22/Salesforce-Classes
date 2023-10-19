@@ -1,5 +1,5 @@
 <template>
-    <template if:true={ShowDistributionmodal}>
+    <template if:true={showDistributionmodal}>
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open distributemodal">
             <!-- Modal/Popup Box LWC header here -->
             <header class="slds-modal__header">
@@ -33,7 +33,7 @@
                     <table class="slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer" style="margin-top:0px; border:1px solid rgb(229, 229, 229)" role="grid" aria-label="resized column">
                         <thead>
                         <tr>
-                            <th  style="width: 3rem">Sr.</th>
+                            <th  style="width: 3rem">Sr No.</th>
                             <th scope="col" height="22">Name</th>
                             <th scope="col" height="22">Target Percentage</th>
                             <th scope="col" height="22">Target Currency Value</th>
@@ -41,44 +41,47 @@
                         </tr>
                         </thead>
                     <tbody>
-                    <template for:each={listOfDistribute} for:item="distributeData" for:index="index">
-                        <tr key={distributeData}>
-                            <td style="font-weight: bold">
-                                <lightning-formatted-number value={distributeData.index}></lightning-formatted-number>
-                            </td>
-                           <td>
-                              <lightning-input type="text" name="Name" data-index={index}
-                                 variant="label-hidden" placeholder="" onchange={handleChange}
-                                 value={distributeData.Name}>
-                              </lightning-input>
-                           </td>
-                           <td>
-                              <lightning-input name="Target Percentage" data-index={index} variant="label-hidden"
-                                 placeholder="" onchange={handleChange} value={distributeData.TargetPercentage}
-                                 >
-                              </lightning-input>
-                           </td>
-                           <td>
-                              <lightning-input type="text" name="Target Currency Value" data-index={index}
-                                 variant="label-hidden" placeholder="" onchange={handleChange}
-                                 value={distributeData.TargetCurrencyValue}>
-                              </lightning-input>
-                           </td>
-                           <td style="text-align:right;">
-                                
-                            <lightning-button label="Distribute by Period" title="Distribute by Period"  class="slds-m-left_x-small" onclick={handleConfig}></lightning-button>
-                            </td>
-                            <td>
-                                <lightning-button-icon icon-name="utility:delete" variant="destructive" style="text-align:center;" alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete" onclick={handleRemoveRow}></lightning-button-icon>
+                        <template for:each={listOfDistribution} for:item="rec">
+                            <tr key={rec} class="slds-hint-parent">
+                                <td style="font-weight: bold">
+                                    <lightning-formatted-number value={rec.index}></lightning-formatted-number>.
                                 </td>
-                        </tr>
-                     </template>
+            
+                                <td>
+                                    <c-custom-Lookup-L-W-C  obj-name="Account"
+                                                            icon-name="standard:account"
+                                                            search-placeholder ="Select Account"
+                                                            variant="label-hidden"
+                                                            data-id={rec.index} 
+                                                            name="AccountName" 
+                                                            onlookupupdate={handleLookupSelection}
+                                                            >
+                                    </c-custom-Lookup-L-W-C>
+                                </td>
+            
+                                <td>
+                                    <lightning-input type="text" variant="label-hidden" data-id={rec.index} name="TargetPercentage" value={rec.TargetPercentage} onchange={handleInputChange}></lightning-input>
+                                </td>
+            
+                                <td>
+                                    <lightning-input type="number" variant="label-hidden" data-id={rec.index} name="TargetCurrencyValue" value={rec.TargetCurrencyValue} onchange={handleInputChange}></lightning-input>
+                                </td>
+            
+                                <td style="text-align:right;">
+                                    <lightning-button label="Distribute by Period" variant="base" title="Distribute by Period"  class="slds-m-left_x-small" onclick={handleConfig}></lightning-button>
+                                </td>
+
+                                <td>
+                                    <lightning-button-icon icon-name="utility:delete" variant="destructive" style="text-align:center;" alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete" name={rec.index} onclick={handleRemoveRow1}></lightning-button-icon>
+                                    </td>
+                            </tr>
+                        </template>     
                     </tbody>
                     </table>
                 </div>
             <hr style="margin:10px 0;">
                 <div>
-                    <lightning-button label="Add Row" title="Add row" icon-name="utility:add" class="slds-m-left_x-small" onclick={handleAddRow}></lightning-button>
+                    <lightning-button label="Add Row" title="Add row" icon-name="utility:add" class="slds-m-left_x-small" onclick={handleAddRow1}></lightning-button>
                 </div>
             </lightning-tab>
 
@@ -89,79 +92,103 @@
         
                     <table class="slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer" style="margin-top:0px; border:1px solid rgb(229, 229, 229)" role="grid" aria-label="resized column">
                         <thead>
-                        <tr>
-                            <th  style="width: 3rem">Sr.</th>
-                            <th scope="col" height="22">Name</th>
-                            <th scope="col" height="22">Price Book</th>
-                            <th scope="col" height="22">List Price</th>
-                            <th scope="col" height="22">Target Percentage</th>
-                            <th scope="col" height="22">Target Currency Value</th>
-                            <th scope="col" height="22">Target Value</th>
-                            <th style="text-align: center;" colspan="2">Action</th>
-                        </tr>
-                    </thead>
-            
+                            <tr>
+                                <th  style="width: 3rem">Sr.</th>
+                                <th scope="col" height="22">Price Book</th>
+                                <th scope="col" height="22">Product Name</th>
+                                <th scope="col" height="22">List Price</th>
+                                <th scope="col" height="22">Target Percentage</th>
+                                <th scope="col" height="22">Target Currency Value</th>
+                                <th scope="col" height="22">Target Value</th>
+                                <th style="text-align: center;" colspan="2">Action</th>
+                            </tr>
+                        </thead>
                     <tbody>
-                        
-                        <tr>
-                            <td>
-                                <div>
-                                    1
-                                </div>
-                            </td>
-                            <td>
-                            <div style="margin-top: -18px;">
-                                <lightning-input type="text" value="Tire"></lightning-input>
-                                </div>
-                            </td>
-                            <td>
-                                <div style="margin-top: -18px;">
-                                    <lightning-input type="text" value="Standard"></lightning-input>
-                                    </div>
-                            </td>
-                            <td>
-                                <div style="margin-top: -18px;">
-                                    <lightning-input type="text" value="$200.00"></lightning-input>
-                                    </div>
-                            </td>
-                            <td>
-                                <div style="margin-top: -18px;">
-                                    <lightning-input type="text" value="50.00"></lightning-input>
-                                    </div>
-                            </td>
-                            <td>
-                                <div style="margin-top: -18px;">
-                                    <lightning-input type="text" value="$3,30,000.00"></lightning-input>
-                                    </div>
-                            </td>
-                            <td>
-                                <div style="margin-top: -18px;">
-                                    <lightning-input type="text" value="1650.00"></lightning-input>
-                                    </div>
-                            </td>
-                            <td>
-                                <lightning-button label="Distribute by Period" title="Distribute by Period" class="slds-m-left_x-small" onclick={handleConfig}>></lightning-button>
+                        <template for:each={listOfDistributionperiod} for:item="rec">
+                            <tr key={rec} class="slds-hint-parent">
+                                <td style="font-weight: bold">
+                                    <lightning-formatted-number value={rec.index}></lightning-formatted-number>.
+                                </td>
+            
+                                <td>
+                                    <c-dynamic-lookup-cmp 
+                                                            mergefields ='isActive'
+                                                            data-id={rec.index} 
+                                                            name="PriceBook" 
+                                                            onremove={removehandler}
+                                                            onselected={handleselectChange}
+                                                            variant="label-hidden"
+                                                            placeholder="Select Pricebook"
+                                                            iconname="standard:Pricebook2"  
+                                                            singleselectedrec={rec.PriceBook} 
+                                                            sobject='Pricebook2'
+                                                            keyfield = 'Id' 
+                                                            displayfields="Name"
+                                                            filter='Id != null'
+                                                            cmpwidth='width:180px;'
+                                                            spinnerwidth='margin-left: 11rem;'>
+                                                            >
+                                    </c-dynamic-lookup-cmp>
                                 </td>
 
                                 <td>
-                                    <lightning-button-icon icon-name="utility:delete" variant="destructive" style="text-align:center;" alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete" onclick={removeRow}></lightning-button-icon>
+                                    <c-dynamic-lookup-cmp 
+                                                            mergefields ='isActive'
+                                                            data-id={rec.index} 
+                                                            name="ProductName" 
+                                                            onremove={removehandler}
+                                                            onselected={handleselectChange}
+                                                            variant="label-hidden"
+                                                            placeholder="Select Product"
+                                                            iconname="standard:Product2"  
+                                                            singleselectedrec={rec.ProductName} 
+                                                            sobject='Product2'
+                                                            keyfield = 'Id' 
+                                                            displayfields="Name"
+                                                            filter={productItem}
+                                                            cmpwidth='width:180px;'
+                                                            spinnerwidth='margin-left: 11rem;'>
+                                                            >
+                                    </c-dynamic-lookup-cmp>
+                                
                                 </td>
-                        </tr>
+
+                                <td>
+                                    <lightning-input type="text" variant="label-hidden" data-id={rec.index} name="ListPrice" value={rec.ListPrice} onchange={handleInputChange}></lightning-input>
+                                </td>
+            
+                                <td>
+                                    <lightning-input type="text" variant="label-hidden" data-id={rec.index} name="TargetPercentage" value={rec.TargetPercentage} onchange={handleInputChange}></lightning-input>
+                                </td>
+            
+                                <td>
+                                    <lightning-input type="number" variant="label-hidden" data-id={rec.index} name="TargetCurrencyValue" value={rec.TargetCurrencyValue} onchange={handleInputChange}></lightning-input>
+                                </td>
+
+                                <td>
+                                    <lightning-input type="text" variant="label-hidden" data-id={rec.index} name="TargetValue" value={rec.TargetValue} onchange={handleInputChange}></lightning-input>
+                                </td>
+                                
+            
+                                <td style="text-align:right;">
+                                    <lightning-button label="Distribute by Period" variant="base" title="Distribute by Period"  class="slds-m-left_x-small" onclick={handleConfig}></lightning-button>
+                                </td>
+
+                                <td>
+                                    <lightning-button-icon icon-name="utility:delete" variant="destructive" style="text-align:center;" alternative-text="Delete"   class="slds-m-left_xx-small" title="Delete" name={rec.index} onclick={handleRemoveRow2}></lightning-button-icon>
+                                </td>
+                            </tr>
+                        </template>
                     </tbody>
-
                 </table>
-
             </div>
 
             <hr style="margin:10px 0;">
-
             <div>
-                    <lightning-button label="Add Row" title="Add row" icon-name="utility:add"  class="slds-m-left_x-small"></lightning-button>
+                <lightning-button label="Add Row" title="Add row" icon-name="utility:add" class="slds-m-left_x-small" onclick={handleAddRow2}></lightning-button>
             </div>
-
-            </lightning-tab>
-            
-        </lightning-tabset>
+        </lightning-tab>
+    </lightning-tabset>
            
     </div>
     <!-- Modal/Popup Box LWC footer starts here -->
@@ -175,7 +202,7 @@
 </template>
 
 
-<template if:true={ShowDistributionPeriod} >
+<template if:true={showDistributionPeriod} >
 <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true" aria-describedby="modal-content-id-2" class="slds-modal slds-fade-in-open slds-modal_xx-small">
 <div class="slds-modal__container" style="z-index: 99 !important;">
     <!-- Modal/Popup Box LWC header here -->

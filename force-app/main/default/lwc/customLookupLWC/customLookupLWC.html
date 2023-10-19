@@ -1,14 +1,6 @@
-<!--
-  @description       : 
-  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
-  @group             : 
-  @last modified on  : 07-28-2022
-  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
--->
 <template>
   <div class="slds-form-element" onmouseleave={toggleResult}  data-source="lookupContainer">      
       <div class="slds-combobox_container slds-has-selection">
-        <label class="slds-form-element__label" for="combobox-id-1">{label}</label>
         <div class="lookupInputContainer slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false" aria-haspopup="listbox" role="combobox"> 
          <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_left-right" role="none">
             <div class="searchBoxWrapper slds-show">
@@ -33,7 +25,8 @@
             <input type="text"
                    id="combobox-id-1"
                    value={selectedRecord.Name}       
-                   class="slds-input slds-combobox__input slds-combobox__input-value" 
+                   class="slds-input slds-combobox__input slds-combobox__input-value"
+                   readonly
                    />
             <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Remove selected option">
             <lightning-icon icon-name="utility:close" size="x-small" alternative-text="close icon" onclick={handleRemove}></lightning-icon> 
